@@ -17,6 +17,9 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "chart.js": "^2.7.1",
+    "express": "^4.15.4",
+    "mongoose": "^5.0.0",
+    "react-chartjs-2": "^2.7.0"
   }
 }
