@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 
 class Chart extends Component {
   constructor(props){
@@ -21,15 +21,20 @@ class Chart extends Component {
             }
            ]
           }
-      }
+      };
+    }
+
+    addFriend = event => {
+      alert("Friend Added")
     }
 
     render() {
       return (
         <div className="chart">
-
             <h1> Compete With Your Friends! </h1>
-            <button> Add Friends! </button>
+            <button onClick={this.addFriend}> 
+            Add Friends! 
+            </button>
             <Bar
             	data={this.state.chartData}
             	options={{}}
@@ -38,5 +43,6 @@ class Chart extends Component {
         )
       }
     }
+
 
 export default Chart;
