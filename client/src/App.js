@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './App.css';
-import Chart from './pages/FrdChart';
 import Dashboard from './pages/Dashboard';
+import Chart from './pages/FrdChart';
 import Upload from './pages/Upload';
 import Nav from "./components/Nav";
 
