@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import "./login.css";
+import { Redirect, Link } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from "../components/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
 
@@ -39,26 +40,46 @@ class LoginForm extends Component {
         <div className="LoginForm">
           <h1>Login form</h1>
           <form>
-            <label htmlFor="username">Username: </label>
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Password: </label>
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <button onClick={this.handleSubmit}>Login</button>
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-user" />
+              </span>
+              <input
+                type="text"
+                name="username"
+                className="form-control"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-unlock-alt" />
+              </span>
+              <input
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                className="form-control"
+                placeholder="Password"
+              />
+            </div>
+            <button
+              id="submit-userauth"
+              type="button"
+              className="btn btn-outline-success"
+              onClick={this.handleSubmit}
+            >
+              Login
+            </button>
           </form>
-          <a href="/auth/google">
+          <Link to="/auth/google">
             {/* <GoogleButton /> */}
             <img src={googleButton} alt="sign into Google Button" />
-          </a>
+          </Link>
         </div>
       );
     }

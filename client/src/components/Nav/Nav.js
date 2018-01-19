@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Nav = () => (
-  <nav className="navbar navbar-inverse navbar-top">
+  <nav className="navbar navbar-inverse sticky-top">
     <div className="container-fluid">
       <div className="navbar-header">
         <Link to="/dash" className="navbar-brand">

@@ -1,0 +1,22 @@
+body {
+  background-color: #fafafa;
+}
+.navbar {
+  background-color: #e9ecef;
+}
+
+.LoginForm {
+  margin-top: 150px;
+  margin: 150px auto auto auto;
+  max-width: 300px;
+  top: 20%;
+  width: 50%;
+}
+.input-group {
+  max-width: 300px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+#submit-userauth {
+  min-width: 300px;
+}
