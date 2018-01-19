@@ -38,7 +38,8 @@ class LoginForm extends Component {
     } else {
       return (
         <div className="LoginForm">
-          <h1>Login form</h1>
+          <img src="./images/power-user-img.png" height="300px" width="300px" />
+					
           <form>
             <div className="input-group with-addon-icon-left">
               <span className="input-group-addon">
