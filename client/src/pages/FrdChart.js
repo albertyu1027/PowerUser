@@ -47,18 +47,23 @@ class Chart extends Component {
     render() {
       return (
         <div className="chart">
-            <h1> Compete With Your Friends! </h1>
+            <h1 style={{display: 'flex', justifyContent: 'center'}}> Compete With Your Friends! </h1>
             <Bar
             	data={this.state.chartData}
             	options={{}}
             />
 
             <br />
-            <button onClick={this.addFriend}>
-              Add A Friend!
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <button 
+                type="button"
+                className="btn btn-outline-success"
+                onClick={this.addFriend}
+                >
+            Add A Friend!
             </button>
+            </div>
             <br />
-
             <h2> Leaderboard </h2>
             <ul>First Place 😎 - {this.state.chartData.datasets[1].label}</ul>
             <ul>Second Place 😇 - {this.state.chartData.datasets[2].label}</ul>
