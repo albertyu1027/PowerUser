@@ -15,7 +15,7 @@ __Value__: Provide environmentally conscious consumers a tool to maintain awaren
 
 ## Project Deliverables
 
-### UI mock-up on 
+### UI Mock-up
 [Figma](https://www.figma.com/file/G8MpnNnitPiCGptAVdmXiZUz/Power-User)
 
 ### Project Management on AirTable
