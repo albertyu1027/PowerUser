@@ -1,17 +1,51 @@
 import React, {Component} from 'react';
-// import {Bar} from 'react-chartjs-2';
-import { Link } from "react-router-dom";
+import {Bar, Line, Pie} from 'react-chartjs-2';
 
-class Dashboard extends Component {
-
-    render() {
-      return (
-        <div className="chart">
-            <h1> Dashboard! </h1>
-        </div>
-        )
+class Dashboard extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      chartData:{
+        labels: ['Boston', 'Ca', 'Lowell'],
+        datasets:[
+          {
+            label:'population',
+            data:[
+              617594,
+              181045,
+              153060
+            ],
+            backgroundColor:[
+              'rgba(255,99,132,0.6)',
+              'rgba(255,99,132,0.6)',
+              'rgba(255,99,132,0.6)'
+            ]
+          }
+        ]
       }
     }
+  }
+
+
+
+  render(){
+    return(
+      <div className="chart">
+        <Bar
+	         data={this.state.chartData}
+	         options={{
+             title:{
+               display: true,
+               text:'Engergy Consumption',
+               fontSize: 25
+             }
+           }}
+        />
+      </div>
+    )
+  }
+}
+
 
 
 export default Dashboard;
