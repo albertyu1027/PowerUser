@@ -49,9 +49,9 @@ class SignupForm extends Component {
       .then(response => {
         console.log(response);
         if (!response.data.errmsg) {
-          console.log("youre good");
+          console.log("you're good");
           this.setState({
-            redirectTo: "/login"
+            redirectTo: "/dash"
           });
         } else {
           console.log("duplicate");
@@ -63,90 +63,91 @@ class SignupForm extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     }
     return (
-      <Container fluid>
+      <Container>
         <div className="SignupForm">
           <Form>
-            <FormGroup
+            {/* <FormGroup
               controlId="formBasicText"
               // validationState={this.getValidationState()}
+            > */}
+            <h1>Sign Up!!!</h1>
+
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-user" />
+              </span>
+              <input
+                type="text"
+                name="username"
+                className="form-control"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-bed" />
+              </span>
+              <input
+                type="text"
+                name="City"
+                className="form-control"
+                placeholder="City"
+                value={this.state.city}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-home" />
+              </span>
+              <input
+                type="text"
+                name="State"
+                className="form-control"
+                placeholder="State"
+                value={this.state.state}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-unlock-alt" />
+              </span>
+              <input
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                className="form-control"
+                placeholder="Password"
+              />
+            </div>
+
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-unlock-alt" />
+              </span>
+              <input
+                type="confirmPassword"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+                className="form-control"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <button
+              id="signup-button"
+              type="button"
+              className="btn btn-outline-primary"
+              onClick={this.handleSubmit}
             >
-              <h1>Signup form</h1>
-
-              <div className="input-group with-addon-icon-left">
-                <span className="input-group-addon">
-                  <i className="fa fa-user" />
-                </span>
-                <input
-                  type="text"
-                  name="username"
-                  className="form-control"
-                  placeholder="Username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="input-group with-addon-icon-left">
-                <span className="input-group-addon">
-                  <i className="fa fa-bed" />
-                </span>
-                <input
-                  type="text"
-                  name="City"
-                  className="form-control"
-                  placeholder="City"
-                  value={this.state.city}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="input-group with-addon-icon-left">
-                <span className="input-group-addon">
-                  <i className="fa fa-home" />
-                </span>
-                <input
-                  type="text"
-                  name="State"
-                  className="form-control"
-                  placeholder="State"
-                  value={this.state.state}
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              <div className="input-group with-addon-icon-left">
-                <span className="input-group-addon">
-                  <i className="fa fa-unlock-alt" />
-                </span>
-                <input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  className="form-control"
-                  placeholder="Password"
-                />
-              </div>
-
-              <div className="input-group with-addon-icon-left">
-                <span className="input-group-addon">
-                  <i className="fa fa-unlock-alt" />
-                </span>
-                <input
-                  type="confirmPassword"
-                  name="confirmPassword"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleChange}
-                  className="form-control"
-                  placeholder="Confirm Password"
-                />
-              </div>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                onClick={this.handleSubmit}
-              >
-                Sign up
-              </button>
-            </FormGroup>
+              Sign up
+            </button>
+            {/* </FormGroup> */}
           </Form>
         </div>
       </Container>

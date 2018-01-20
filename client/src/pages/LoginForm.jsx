@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from "../components/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
-
+import { Container } from "../components/Grid";
 class LoginForm extends Component {
   constructor() {
     super();
@@ -37,52 +37,59 @@ class LoginForm extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {
       return (
-        <div className="LoginForm">
-          <img src="./images/power-user-img.png" height="300px" width="300px" />
+        <Container>
+          <div className="LoginForm">
+            <img
+              alt="Power User Img"
+              src="./images/power-user-img.png"
+              height="300px"
+              width="300px"
+            />
 
-          <form>
-            <div className="input-group with-addon-icon-left">
-              <span className="input-group-addon">
-                <i className="fa fa-user" />
-              </span>
-              <input
-                type="text"
-                name="username"
-                className="form-control"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </div>
+            <form>
+              <div className="input-group with-addon-icon-left">
+                <span className="input-group-addon">
+                  <i className="fa fa-user" />
+                </span>
+                <input
+                  type="text"
+                  name="username"
+                  className="form-control"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </div>
 
-            <div className="input-group with-addon-icon-left">
-              <span className="input-group-addon">
-                <i className="fa fa-unlock-alt" />
-              </span>
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-                className="form-control"
-                placeholder="Password"
-              />
-            </div>
-            <button
-              id="submit-userauth"
-              type="button"
-              className="btn btn-outline-success"
-              onClick={this.handleSubmit}
-            >
-              Login
-            </button>
-          </form>
+              <div className="input-group with-addon-icon-left">
+                <span className="input-group-addon">
+                  <i className="fa fa-unlock-alt" />
+                </span>
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  className="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <button
+                id="submit-userauth"
+                type="button"
+                className="btn btn-outline-success"
+                onClick={this.handleSubmit}
+              >
+                Login
+              </button>
+            </form>
 
-          <Link to="/auth/google">
-            {/* <GoogleButton /> */}
-            <img src={googleButton} alt="sign into Google Button" />
-          </Link>
-        </div>
+            <Link to="/auth/google">
+              {/* <GoogleButton /> */}
+              <img src={googleButton} alt="sign into Google Button" />
+            </Link>
+          </div>
+        </Container>
       );
     }
   }

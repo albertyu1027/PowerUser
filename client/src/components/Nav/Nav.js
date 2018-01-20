@@ -20,7 +20,7 @@ const Nav = () => (
           Login
         </Link>
         <Link to="/signup" className="navbar-brand">
-          SignUp
+          Sign Up
         </Link>
       </div>
     </div>
