@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./login.css";
+// import "./login.css";
 import { Redirect, Link } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import googleButton from "../components/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
@@ -39,7 +39,7 @@ class LoginForm extends Component {
       return (
         <div className="LoginForm">
           <img src="./images/power-user-img.png" height="300px" width="300px" />
-					
+
           <form>
             <div className="input-group with-addon-icon-left">
               <span className="input-group-addon">
@@ -77,6 +77,7 @@ class LoginForm extends Component {
               Login
             </button>
           </form>
+
           <Link to="/auth/google">
             {/* <GoogleButton /> */}
             <img src={googleButton} alt="sign into Google Button" />

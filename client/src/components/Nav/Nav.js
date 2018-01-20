@@ -19,6 +19,9 @@ const Nav = () => (
         <Link to="/login" className="navbar-brand">
           Login
         </Link>
+        <Link to="/signup" className="navbar-brand">
+          SignUp
+        </Link>
       </div>
     </div>
   </nav>
