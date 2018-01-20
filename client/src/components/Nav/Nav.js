@@ -1,23 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Nav = () =>
-<nav className="navbar navbar-inverse navbar-top">
-  <div className="container-fluid">
-    <div className="navbar-header">
+const Nav = () => (
+  <nav className="navbar navbar-inverse sticky-top">
+    <div className="container-fluid">
+      <div className="navbar-header">
+        <Link to="/dash" className="navbar-brand">
+          Home
+        </Link>
 
-      <a href="/dash" className="navbar-brand">
-        Home
-      </a>
+        <Link to="/upload" className="navbar-brand">
+          Upload
+        </Link>
 
-      <a href="/upload" className="navbar-brand">
-        Upload
-      </a>
-
-      <a href="/frd" className="navbar-brand">
-        Compete
-      </a>
+        <Link to="/frd" className="navbar-brand">
+          Compete
+        </Link>
+        <Link to="/login" className="navbar-brand">
+          Login
+        </Link>
+        <Link to="/signup" className="navbar-brand">
+          Sign Up
+        </Link>
+      </div>
     </div>
-  </div>
-</nav>;
+  </nav>
+);
 
 export default Nav;
