@@ -20,7 +20,8 @@ __Value__: Provide environmentally conscious consumers a tool to maintain awaren
 
 ### Project Management on AirTable
 [Assigned Tasks](https://airtable.com/shrzxX9mCGg3EONkc/tblQ3GATbXly6c342)<br />
-[Due Dates calendar view](#https://airtable.com/shrCMTMPGnggWSeEo)
+[Due Dates calendar view](#https://airtable.com/shrCMTMPGnggWSeEo)<br />
+[Status Kanban](https://airtable.com/shrnQGYnws5jOAAsY)
 
 ## Starting the app locally
 
