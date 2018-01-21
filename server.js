@@ -1,34 +1,46 @@
+require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
-// const routes = require("./routes");
-const PORT = process.env.PORT || 3001;
-const uploadRoutes = require("./routes/upload");
+const routes = require("./routes");
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Upload routes
-app.use("/upload", uploadRoutes);
+// Configure body parser for AJAX requests
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Serve up static assets
+app.use(express.static("client/build"));
+// Add routes, both API and view
+app.use(routes);
 
-// Serve up static assets (usually on heroku)
+// Configure body parser for AJAX requests
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.set("port", process.env.PORT || 3001);
+
+// Add routes, both API and view
+app.use(routes);
+
+//Minor onChange
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  // const path = require("path");
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  // });
 }
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/poweruser";
+// Set up promises with mongoose
+mongoose.Promise = global.Promise;
+// Connect to the Mongo DB
+mongoose.connect(MONGODB_URI);
 
-// // Set up promises with mongoose
-// mongoose.Promise = global.Promise;
-
-// //connect to mongo db
-// mongoose.connect(
-//   process.env.MONGODB_URI || "mongodb://localhost/27017",
-
-// );
-
-app.listen(PORT, function() {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
+// Start the API server
+app.listen(app.get("port"), function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${app.get("port")}!`);
 });
