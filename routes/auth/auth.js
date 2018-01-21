@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/user");
 const passport = require("../../passport");
+const authController = require("../../controllers/authController");
 
 // this route is just used to get the user basic info
 router.get("/user", (req, res, next) => {
@@ -42,31 +43,31 @@ router.post("/logout", (req, res) => {
     return res.json({ msg: "no user to log out!" });
   }
 });
-router.post("/signup", (req, res) => {
-  console.log(req.body);
-  const { city, stateLocation, username, password } = req.body;
-  console.log(username);
-
-  // ADD VALIDATION
-  User.findOne({ "local.username": username }, (err, userMatch) => {
-    if (userMatch) {
-      return res.json({
-        error: `Sorry, already a user with the username: ${username}`
-      });
-    }
-
-    const newUser = new User({
-      city: city,
-      state: stateLocation,
-      "local.username": username,
-      "local.password": password
-    });
-    newUser.save((err, savedUser) => {
-      console.log("user is saved");
-      if (err) return res.json(err);
-      return res.json(savedUser);
-    });
-  });
-});
+// router.post("/signup", (req, res) => {
+//   console.log(req.body);
+//   const { city, stateLocation, username, password } = req.body;
+//   console.log(username);
+//
+//   // ADD VALIDATION
+//   User.findOne({ "local.username": username }, (err, userMatch) => {
+//     if (userMatch) {
+//       return res.json({
+//         error: `Sorry, already a user with the username: ${username}`
+//       });
+//     }
+//
+//     const newUser = new User({
+//       city: city,
+//       state: stateLocation,
+//       "local.username": username,
+//       "local.password": password
+//     });
+//     newUser.save((err, savedUser) => {
+//       console.log("user is saved");
+//       if (err) return res.json(err);
+//       return res.json(savedUser);
+//     });
+//   });
+router.post("/signup", authController.createNewUser);
 
 module.exports = router;

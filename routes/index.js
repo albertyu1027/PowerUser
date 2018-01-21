@@ -5,7 +5,7 @@ const User = require("../models/user");
 const passport = require("../passport");
 
 // API Routes
-router.use("/auth", authRoutes);
+router.use("/", authRoutes);
 
 // If no API routes are hit, send the React app
 // router.use(function(req, res) {
