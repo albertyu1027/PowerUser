@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
+import API from "../utils/API";
 import {
   Grid,
   Row,
@@ -41,22 +42,22 @@ class SignupForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     // TODO - validate!
-    axios
-      .post("/auth/signup", {
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(response => {
-        console.log(response);
-        if (!response.data.errmsg) {
-          console.log("you're good");
-          this.setState({
-            redirectTo: "/dash"
-          });
-        } else {
-          console.log("duplicate");
-        }
-      });
+    API.signUpNewUser({
+      username: this.state.username,
+      password: this.state.password,
+      city: this.state.city,
+      stateLocation: this.state.stateLocation
+    }).then(response => {
+      console.log(response);
+      if (!response.data.errmsg) {
+        console.log("you're good");
+        this.setState({
+          redirectTo: null
+        });
+      } else {
+        console.log("duplicate");
+      }
+    });
   }
   render() {
     if (this.state.redirectTo) {
@@ -131,7 +132,7 @@ class SignupForm extends Component {
                 <i className="fa fa-unlock-alt" />
               </span>
               <input
-                type="confirmPassword"
+                type="password"
                 name="confirmPassword"
                 value={this.state.confirmPassword}
                 onChange={this.handleChange}
