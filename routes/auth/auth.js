@@ -54,6 +54,7 @@ router.post("/signup", (req, res) => {
         error: `Sorry, already a user with the username: ${username}`
       });
     }
+
     const newUser = new User({
       city: city,
       state: stateLocation,
