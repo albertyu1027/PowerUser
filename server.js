@@ -38,9 +38,7 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/poweruser";
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+mongoose.connect(MONGODB_URI);
 
 // Start the API server
 app.listen(app.get("port"), function() {
