@@ -21,7 +21,7 @@ class SignupForm extends Component {
       password: "",
       confirmPassword: "",
       city: "",
-      state: "",
+      stateLocation: "",
       redirectTo: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,10 +77,10 @@ class SignupForm extends Component {
                 <i className="fa fa-user" />
               </span>
               <input
-                type="text"
+                type="email"
                 name="username"
                 className="form-control"
-                placeholder="Username"
+                placeholder="Enter Your Email"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
@@ -91,9 +91,9 @@ class SignupForm extends Component {
               </span>
               <input
                 type="text"
-                name="City"
+                name="city"
                 className="form-control"
-                placeholder="City"
+                placeholder="Enter Your City"
                 value={this.state.city}
                 onChange={this.handleChange}
               />
@@ -104,10 +104,10 @@ class SignupForm extends Component {
               </span>
               <input
                 type="text"
-                name="State"
+                name="stateLocation"
                 className="form-control"
-                placeholder="State"
-                value={this.state.state}
+                placeholder="Enter Your State"
+                value={this.state.stateLocation}
                 onChange={this.handleChange}
               />
             </div>
@@ -122,7 +122,7 @@ class SignupForm extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
                 className="form-control"
-                placeholder="Password"
+                placeholder="Enter Your Password"
               />
             </div>
 
@@ -136,7 +136,7 @@ class SignupForm extends Component {
                 value={this.state.confirmPassword}
                 onChange={this.handleChange}
                 className="form-control"
-                placeholder="Confirm Password"
+                placeholder="Confirm Your Password"
               />
             </div>
             <button
@@ -144,6 +144,15 @@ class SignupForm extends Component {
               type="button"
               className="btn btn-outline-primary"
               onClick={this.handleSubmit}
+              disabled={
+                !(
+                  this.state.username &&
+                  this.state.password &&
+                  this.state.confirmPassword &&
+                  this.state.city &&
+                  this.state.stateLocation
+                )
+              }
             >
               Sign up
             </button>

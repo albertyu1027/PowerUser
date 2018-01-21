@@ -52,7 +52,7 @@ class LoginForm extends Component {
                   <i className="fa fa-user" />
                 </span>
                 <input
-                  type="text"
+                  type="email"
                   name="username"
                   className="form-control"
                   placeholder="Username"
