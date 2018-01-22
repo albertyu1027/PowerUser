@@ -1,11 +1,5 @@
 # Power User
 
-
-### Table of Contents
-[Purpose and Value](#purpose-and-value)<br />
-[Project Deliverables](#project-deliverables)<br />
-[Starting App Locally](#starting-app-locally)<br />
-=======
 [![dependencies Status](https://david-dm.org/albertyu1027/PowerUser/status.svg)](https://david-dm.org/albertyu1027/PowerUser)
 
 ## Table of Contents
@@ -54,8 +48,6 @@ After both installations complete, run the following command in your terminal:
 ```
 yarn start
 
-```
-=======
 ```
 
 ## Deployment
