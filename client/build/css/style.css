@@ -1,0 +1,34 @@
+body {
+  background-color: #fafafa;
+}
+.navbar {
+  background-color: #e9ecef;
+}
+
+.LoginForm {
+  margin: 50px auto auto auto;
+  max-width: 300px;
+  top: 20%;
+  width: 50%;
+}
+.input-group {
+  width: 300px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+#submit-userauth {
+  min-width: 300px;
+}
+.container {
+  background: none;
+}
+.SignupForm {
+  text-align: center;
+  margin: 50px auto auto auto;
+  max-width: 300px;
+  top: 20%;
+  width: 50%;
+}
+#signup-button {
+  min-width: 300px;
+}
