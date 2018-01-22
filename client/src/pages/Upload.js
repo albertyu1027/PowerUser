@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
-// import {Bar} from 'react-chartjs-2';
 import { Link } from "react-router-dom";
-import Uppy from 'uppy/lib/core'
-import Dashboard from 'uppy/lib/plugins/Dashboard'
-import Tus from 'uppy/lib/plugins/Tus'
+import { Container } from "../components/Grid";
 
 class Upload extends Component {
 
+  constructor() {
+    super();
+  }
+
+  fileInput(event) {
+    var file = event.target.files[0];
+    var details = {
+      name: file.name,
+      type: file.type,
+      size: file.size
+    }
+    document.getElementById("file").innerText = JSON.stringify(details);
+  }
+
   render() {
-    Uppy({autoProceed: false})
-      .use(Dashboard, {trigger: '#select-files'})
-      .use(Tus, {endpoint: 'https://master.tus.io/files/'})
-      .run()
-      .on('complete', (result) => {
-        console.log('Upload result:', result)
-      });
 
     return (
-      <div className="chart">
-        <h1> Upload Page! </h1>
-        { /* <div id="select-files"></div> */ }
+      <Container>
+      <div className="row" style={{"padding-top":"25px"}}>
+        <div className="col-sm-12">
+        <h3>Select a text file:</h3>
+        <input type="file" className="btn btn-outline-primary btn-lg" onChange={this.fileInput} id="fileInput" />
+        <p id="file" style={{"padding-top":"25px", fontSize:"22px"}}></p>
+        </div>
       </div>
+      </Container>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import { Container } from "../components/Grid";
 
 class Dashboard extends Component{
   constructor(props){
@@ -30,6 +31,7 @@ class Dashboard extends Component{
 
   render(){
     return(
+      <Container>
       <div className="chart">
         <Bar
 	         data={this.state.chartData}
@@ -42,6 +44,7 @@ class Dashboard extends Component{
            }}
         />
       </div>
+      </Container>
     )
   }
 }
