@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import "./login.css";
 import { Redirect, Link } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
+import API from "../utils/API";
 import googleButton from "../components/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
 import { Container } from "../components/Grid";
 class LoginForm extends Component {
@@ -10,7 +11,9 @@ class LoginForm extends Component {
     this.state = {
       username: "",
       password: "",
-      redirectTo: null
+      loggedin: false,
+      redirectTo: null,
+      user: null
     };
     // this.googleSignin = this.googleSignin.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,12 +26,34 @@ class LoginForm extends Component {
     });
   }
 
+  // loginUser(username, password) {
+  //   API.loginUser({ username, password }).then(response => {
+  //     console.log(response);
+  //     if (response.status === 200) {
+  //       // update the state
+  //       this.setState({
+  //         loggedIn: true,
+  //         user: response.data.user
+  //       });
+  //     }
+  //   });
+  // }
+
   handleSubmit(event) {
     event.preventDefault();
     console.log("handleSubmit");
-    this.props._login(this.state.username, this.state.password);
-    this.setState({
-      redirectTo: "/"
+    API.loginUser({
+      username: this.state.username,
+      password: this.state.password
+    }).then(response => {
+      console.log(response);
+      if (response.status === 200) {
+        // update the state
+        this.setState({
+          loggedIn: true,
+          user: response.data.user
+        });
+      }
     });
   }
 
@@ -84,10 +109,10 @@ class LoginForm extends Component {
               </button>
             </form>
 
-            <Link to="/auth/google">
-              {/* <GoogleButton /> */}
-              <img src={googleButton} alt="sign into Google Button" />
-            </Link>
+            {/* <Link to="/auth/google"> */}
+            {/* <GoogleButton /> */}
+            {/* <img src={googleButton} alt="sign into Google Button" /> */}
+            {/* </Link> */}
           </div>
         </Container>
       );
