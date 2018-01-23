@@ -109,6 +109,18 @@ class LoginForm extends Component {
                 Login
               </button>
             </form>
+            <Link to="/signup">
+              {" "}
+              <p
+                style={{
+                  color: "blue",
+                  "text-align": "center",
+                  "margin-top": "10px"
+                }}
+              >
+                Not A User? Sign Up Today
+              </p>
+            </Link>
 
             {/* <Link to="/auth/google"> */}
             {/* <GoogleButton /> */}
