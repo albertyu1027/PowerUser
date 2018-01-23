@@ -21,6 +21,6 @@ router.use("/", authRoutes);
 //     failureRedirect: "/login"
 //   })
 // );
-router.use("/upload", uploadRoutes);
+router.use("/api/upload", uploadRoutes);
 
 module.exports = router;
