@@ -51,7 +51,8 @@ class LoginForm extends Component {
         // update the state
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user,
+          redirectTo: "/dash"
         });
       }
     });

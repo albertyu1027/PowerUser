@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static(`${__dirname}/client/build`));
-// Add routes, both API and view
-app.use(routes);
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,13 +30,13 @@ app.use(
 ); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
 // Add routes, both API and view
 app.use(routes);
 
 //Minor onChange
 if (process.env.NODE_ENV === "production") {
-
-  app.get('*', function(req, res) {
+  app.get("*", function(req, res) {
     res.sendFile(`${__dirname}/client/build/index.html`);
   });
 }
