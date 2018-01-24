@@ -16,5 +16,9 @@ export default {
   // Saves a book to the database
   saveUpload: function(uploadData) {
     return axios.post("/api/uploads", uploadData);
-  }
+  },
+
+  signUpNewUser: function(userData) {
+  return axios.post("/auth/signup", userData);
+}
 };
