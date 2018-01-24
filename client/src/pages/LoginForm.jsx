@@ -42,15 +42,12 @@ class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("handleSubmit");
-    // this.props._login(this.state.username, this.state.password);
-    // this.setState({
-    //   redirectTo: "/"
-    // });
+
     API.loginUser({
       username: this.state.username,
       password: this.state.password
     }).then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
         // update the state
         this.setState({

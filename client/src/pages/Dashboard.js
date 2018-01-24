@@ -21,15 +21,22 @@ class Dashboard extends Component {
           }
         ]
       },
-      userData: this.props.location.state.userData
+      userData: this.props.location.state.userData,
+      redirectTo: "/login"
     };
   }
   componentDidMount() {
     console.log(this.state);
+    console.log(this.props);
+    if (this.props) {
+      this.setState({
+        loggedIn: true
+      });
+    }
   }
 
   render() {
-    if (this.state.redirectTo) {
+    if (false) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {
       return (
