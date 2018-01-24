@@ -10,25 +10,40 @@ class Upload extends Component {
 
   fileInput(event) {
     var file = event.target.files[0];
+    var textType = /text.*/;
     var details = {
       name: file.name,
       type: file.type,
       size: file.size
+    };
+
+    document.getElementById("fileData").innerText = JSON.stringify(details);
+
+    if (file.type.match(textType)) {
+      var reader = new FileReader();
+
+      reader.onload = function() {
+        document.getElementById("fileContent").innerText = reader.result;
+      };
+
+      reader.readAsText(file);
+    } else {
+      document.getElementById("fileContent").innerText = "File not supported!";
     }
-    document.getElementById("file").innerText = JSON.stringify(details);
   }
 
   render() {
 
     return (
       <Container>
-      <div className="row" style={{"padding-top":"25px"}}>
-        <div className="col-sm-12">
-        <h3>Select a text file:</h3>
-        <input type="file" className="btn btn-outline-primary btn-lg" onChange={this.fileInput} id="fileInput" />
-        <p id="file" style={{"padding-top":"25px", fontSize:"22px"}}></p>
+        <div className="row" style={ { "padding-top": "25px" } }>
+          <div className="col-sm-12">
+            <h3>Select a text file:</h3>
+            <input type="file" className="btn btn-outline-primary btn-lg" onChange={ this.fileInput } id="fileInput" />
+            <p id="fileData" style={ { "padding-top": "25px", fontSize: "22px" } }></p>
+            <p id="fileContent" style={ { "padding-top": "25px", fontSize: "22px" } }></p>
+          </div>
         </div>
-      </div>
       </Container>
     )
   }
