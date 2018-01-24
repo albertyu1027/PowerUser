@@ -8,7 +8,7 @@ router.route("/")
   .post(uploadController.create);
 // Matches with "/api/books/:id"
 router
-  .route("/:id")
+  .route("/:UserID")
   .get(uploadController.findById)
   .put(uploadController.update)
   .delete(uploadController.remove);
