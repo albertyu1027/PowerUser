@@ -47,10 +47,28 @@ After both installations complete, run the following command in your terminal:
 
 ```
 yarn start
-
 ```
 
 ## Deployment
 
-...
+Create a new build from the root directory of your local environment
 
+```
+cd client
+yarn build
+```
+After Webpack has completed the build, commit the new build files to the repo and push to Heroku.
+
+```
+cd ..
+git add .
+git commit -m "..."
+git push heroku master
+```
+
+If you want to push a different branch to Heroku, change the last command to the following:
+
+```bash
+### name_of_branch should be the name of the branch you want to push to Heroku.
+git push heroku name_of_branch:master
+```
