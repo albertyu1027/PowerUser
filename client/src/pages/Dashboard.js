@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
+import API from "../utils/API";
 
 class Dashboard extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
+
+    state = {
       chartData:{
-        labels: ['Boston', 'Ca', 'Lowell'],
+        labels: [1],
         datasets:[
           {
             label:'population',
@@ -24,7 +24,29 @@ class Dashboard extends Component{
         ]
       }
     }
-  }
+
+    loadUpload = () => {
+      API.getUploads()
+        .then(res => {
+          let newlabels = this.state.chartData.labels.slice()
+          newlabels.push(100)
+          console.log(newlabels)
+          this.setState({labels:newlabels})
+
+           // this.setState({ 'labels': this.state.chartData.labels.concat([100])});
+           // console.log(this.state.chartData.labels)
+         // this.state.chartData.labels[0]=res.data[1].kwh;
+         //  //console.log(res.data[1].kwh)
+       })
+        .catch(err => console.log(err));
+    };
+
+
+    componentDidMount(){
+      this.loadUpload()
+    }
+
+
 
 
 
