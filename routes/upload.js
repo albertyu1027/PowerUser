@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 var upload = multer({
-	dest: "/uploads"
+	dest: "uploads/"
 });
 
 router.post("/", upload.single("pgeCsv"), function (req, res, next) {
