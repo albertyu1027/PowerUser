@@ -42,6 +42,10 @@ class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("handleSubmit");
+    // this.props._login(this.state.username, this.state.password);
+    // this.setState({
+    //   redirectTo: "/"
+    // });
     API.loginUser({
       username: this.state.username,
       password: this.state.password
@@ -60,7 +64,14 @@ class LoginForm extends Component {
 
   render() {
     if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+      return (
+        <Redirect
+          to={{
+            pathname: this.state.redirectTo,
+            state: { userData: this.state.user }
+          }}
+        />
+      );
     } else {
       return (
         <Container>
@@ -114,8 +125,8 @@ class LoginForm extends Component {
               <p
                 style={{
                   color: "blue",
-                  "text-align": "center",
-                  "margin-top": "10px"
+                  textAlign: "center",
+                  marginTop: "10px"
                 }}
               >
                 Not A User? Sign Up Today
