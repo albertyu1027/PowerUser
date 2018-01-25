@@ -6,14 +6,13 @@ import "./App.css";
 import Chart from "./pages/FrdChart";
 import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
-import Nav from "./components/Nav";
+
 import LoginForm from "./pages/LoginForm";
 import SignupForm from "./pages/SignupForm";
 
 const App = () => (
   <Router>
     <div>
-      <Nav />
       <Switch>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/dash" component={Dashboard} />
