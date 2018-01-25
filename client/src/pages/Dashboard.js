@@ -26,11 +26,18 @@ class Dashboard extends Component {
   }
   componentDidMount() {
     console.log(this.state);
+    console.log(this.props);
+    if (this.props.location.state) {
+      this.setState({
+        userData: this.props.location.state.userData
+      });
+    }
   }
 
-  render() {
-    if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+  renderContent() {
+    //Without User Authentication- Redirect Back to Login page
+    if (!this.props.location.state) {
+      return <Redirect to="/login" />;
     } else {
       return (
         <Container>
@@ -50,6 +57,10 @@ class Dashboard extends Component {
         </Container>
       );
     }
+  }
+
+  render() {
+    return this.renderContent();
   }
 }
 
