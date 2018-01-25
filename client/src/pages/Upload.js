@@ -38,7 +38,7 @@ class Upload extends Component {
           <div className="col-sm-12">
             <h3>Select a text file:</h3>
             <form action="/api/upload" encType="multipart/form-data" method="post">
-              <div class="form-group">
+              <div className="form-group">
                 <input type="file" className="form-control" onChange={ this.fileInput } name="pgeCsv" id="pgeCsv" />
               </div>
               <button type="submit" className="btn btn-primary">Upload</button>
