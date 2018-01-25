@@ -21,7 +21,8 @@ class Dashboard extends Component {
           }
         ]
       },
-      userData: this.props.location.state.userData
+      userData: this.props.location.state.userData,
+      redirectTo: "/login"
     };
   }
   componentDidMount() {

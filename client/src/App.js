@@ -15,7 +15,7 @@ const App = () => (
     <div>
       <Nav />
       <Switch>
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/" component={LoginForm} />
         <Route exact path="/dash" component={Dashboard} />
         <Route exact path="/upload" component={Upload} />
         <Route exact path="/frd" component={Chart} />
