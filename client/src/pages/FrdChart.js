@@ -33,8 +33,11 @@ class Chart extends Component {
       };
     }
 
+//need to add a function to refresh the chart.
+
     addFriend = event => {
-      alert("Friend Added")
+      var searchEmail = prompt("What is your friend's email address?")
+      console.log(searchEmail)
     }
 
     // sumThings = event => {
@@ -56,7 +59,7 @@ class Chart extends Component {
 
             <br />
             <div style={{display: 'flex', justifyContent: 'center'}}>
-            <button 
+            <button
                 type="button"
                 className="btn btn-outline-success"
                 onClick={this.addFriend}
@@ -76,6 +79,5 @@ class Chart extends Component {
         )
       }
     }
-
 
 export default Chart;

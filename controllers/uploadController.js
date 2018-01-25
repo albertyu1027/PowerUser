@@ -1,5 +1,5 @@
 const db = require("../models");
-// Defining methods for the booksController
+// Defining methods for the uploadController
 module.exports = {
   findAll: function(req, res) {
     db.Upload
@@ -9,7 +9,7 @@ module.exports = {
   },
   findById: function(req, res) {
     db.Upload
-      .findById(req.params.id)
+      .find({UserID: req.params.UserID})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
