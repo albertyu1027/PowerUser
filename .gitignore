@@ -54,7 +54,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-.DS_Store
-
 # dotenv environment variables file
 .env
+
+# Power User
+.DS_Store
+package-lock.json

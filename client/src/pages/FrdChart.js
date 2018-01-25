@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
 import { Link } from "react-router-dom";
-
+import { Container } from "../components/Grid";
 class Chart extends Component {
   constructor(props){
     super(props);
@@ -49,6 +49,7 @@ class Chart extends Component {
 
     render() {
       return (
+        <Container>
         <div className="chart">
             <h1 style={{display: 'flex', justifyContent: 'center'}}> Compete With Your Friends! </h1>
             <Bar
@@ -74,6 +75,7 @@ class Chart extends Component {
             <ul></ul>
 
         </div>
+        </Container>
         )
       }
     }

@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UploadSchema = new Schema({
-  UserID: String,
-  name: String,
-  month: Number,
-  kwh: Number,
-  bill: Number
+  id: String,
+  date: Date,
+  kwhUsage: Number,
+  cost: Number
 });
 
 const Upload = mongoose.model("Upload", UploadSchema);

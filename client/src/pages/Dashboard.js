@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+
 import {Bar} from 'react-chartjs-2';
 import API from "../utils/API";
+import { Container } from "../components/Grid";
 
 class Dashboard extends Component{
 
@@ -52,6 +54,7 @@ class Dashboard extends Component{
 
   render(){
     return(
+      <Container>
       <div className="chart">
         <Bar
 	         data={this.state.chartData}
@@ -64,6 +67,7 @@ class Dashboard extends Component{
            }}
         />
       </div>
+      </Container>
     )
   }
 }
