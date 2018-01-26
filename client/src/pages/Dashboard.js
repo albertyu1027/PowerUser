@@ -25,6 +25,7 @@ class Dashboard extends Component {
     };
   }
   componentDidMount() {
+    //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
         {
@@ -42,6 +43,7 @@ class Dashboard extends Component {
     if (!this.props.location.state) {
       return <Redirect to="/login" />;
     } else {
+      //Otherwise return the chart data
       return (
         <div>
           <Nav />
