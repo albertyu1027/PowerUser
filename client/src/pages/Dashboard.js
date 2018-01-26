@@ -16,11 +16,7 @@ class Dashboard extends Component{
     API.getUploads()
       .then(res => {
         let datasets = [];
-        let dataset = {
-          label:"",
-          backgroundColor: "",
-          data: []
-        }
+
         let months = [];
         let bills = [];
         let backgroundColor = [
@@ -37,27 +33,35 @@ class Dashboard extends Component{
           'rgba(255,99,132,0.6)',
           'rgba(255,99,132,0.6)'
         ];
+
+
         // loop throuh kwh data
         for (var i = 1; i < res.data.length; i++) {
           months.push(res.data[i].kwh);
         }
           months.sort()
+
         // loop throuh cost data
         for (var i = 1; i < res.data.length; i++) {
           bills.push(res.data[i].bill);
         }
+
+        // loop throuh cost data
+        for (var i = 0; i<months.length; i++){
+          var dataset = {
+            label:months[i],
+            backgroundColor: backgroundColor[i],
+            data: [bills[i]]
+          }
+          datasets.push(dataset)
+        }
+        console.log(datasets);
         console.log(res.data);
         console.log(months);
         this.setState({
           KwhChartData:{
             labels: months,
-            datasets:[
-              {
-                label:'population',
-                data:bills,
-                backgroundColor:backgroundColor
-              }
-            ]
+            datasets: datasets
           },
           CostChartData:{
             labels: months,
@@ -86,6 +90,7 @@ class Dashboard extends Component{
       <div className="chart">
         <Bar
 	         data={this.state.KwhChartData}
+           style={{display: 'flex', justifyContent: 'center'}}
 	         options={{
              title:{
                display: true,
