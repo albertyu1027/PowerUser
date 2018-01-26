@@ -19,6 +19,10 @@ export default {
   },
 
   signUpNewUser: function(userData) {
-  return axios.post("/auth/signup", userData);
-}
+    return axios.post("/auth/signup", userData);
+  },
+
+  loginUser: function(loginCredentials) {
+    return axios.post("/auth/login", loginCredentials);
+  }
 };

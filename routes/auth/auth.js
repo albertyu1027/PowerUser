@@ -3,6 +3,9 @@ const User = require("../../models/user");
 const passport = require("../../passport");
 const authController = require("../../controllers/authController");
 
+//Create A New User
+router.post("/signup", authController.createNewUser);
+
 // this route is just used to get the user basic info
 router.get("/user", (req, res, next) => {
   console.log("===== user!!======");
@@ -68,6 +71,5 @@ router.post("/logout", (req, res) => {
 //       return res.json(savedUser);
 //     });
 //   });
-router.post("/signup", authController.createNewUser);
 
 module.exports = router;
