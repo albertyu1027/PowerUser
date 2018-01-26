@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const passport = require("passport");
+const session = require("express-session");
 const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
@@ -11,8 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static(`${__dirname}/client/build`));
-// Add routes, both API and view
-app.use(routes);
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,13 +20,23 @@ app.use(bodyParser.json());
 
 app.set("port", process.env.PORT || 3001);
 
+//Setting Up Passport
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true
+  })
+); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 // Add routes, both API and view
 app.use(routes);
 
 //Minor onChange
 if (process.env.NODE_ENV === "production") {
-
-  app.get('*', function(req, res) {
+  app.get("*", function(req, res) {
     res.sendFile(`${__dirname}/client/build/index.html`);
   });
 }
