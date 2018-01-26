@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
-
 class Upload extends Component {
 
   constructor() {
@@ -33,15 +32,19 @@ class Upload extends Component {
   }
 
   render() {
-
     return (
       <Container>
-        <div className="row" style={ { "padding-top": "25px" } }>
+        <div className="row" style={ { "paddingTop": "25px" } }>
           <div className="col-sm-12">
             <h3>Select a text file:</h3>
-            <input type="file" className="btn btn-outline-primary btn-lg" onChange={ this.fileInput } id="fileInput" />
-            <p id="fileData" style={ { "padding-top": "25px", fontSize: "22px" } }></p>
-            <p id="fileContent" style={ { "padding-top": "25px", fontSize: "22px" } }></p>
+            <form action="/api/upload" encType="multipart/form-data" method="post">
+              <div class="form-group">
+                <input type="file" className="form-control" onChange={ this.fileInput } name="pgeCsv" id="pgeCsv" />
+              </div>
+              <button type="submit" className="btn btn-primary">Upload</button>
+            </form>
+            <p id="fileData" style={ { "paddingTop": "25px", fontSize: "22px" } }></p>
+            <p id="fileContent" style={ { "paddingTop": "25px", fontSize: "22px" } }></p>
           </div>
         </div>
       </Container>

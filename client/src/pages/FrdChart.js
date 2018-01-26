@@ -49,9 +49,18 @@ class Chart extends Component {
     };
   }
 
+<<<<<<< HEAD
   addFriend = event => {
     alert("Friend Added");
   };
+=======
+//need to add a function to refresh the chart.
+
+    addFriend = event => {
+      var searchEmail = prompt("What is your friend's email address?")
+      console.log(searchEmail)
+    }
+>>>>>>> 979ca2ced42e7b71abc12f5e82340c3f5cac2464
 
   // sumThings = event => {
   //   for (var i=0; i<4; i++){
@@ -82,8 +91,13 @@ class Chart extends Component {
             <Bar data={this.state.chartData} options={{}} />
 
             <br />
+<<<<<<< HEAD
             <div style={{ display: "flex", justifyContent: "center" }}>
               <button
+=======
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <button
+>>>>>>> 979ca2ced42e7b71abc12f5e82340c3f5cac2464
                 type="button"
                 className="btn btn-outline-success"
                 onClick={this.addFriend}
@@ -99,9 +113,15 @@ class Chart extends Component {
             <ul />
           </div>
         </Container>
+<<<<<<< HEAD
       </div>
     );
   }
 }
+=======
+        )
+      }
+    }
+>>>>>>> 979ca2ced42e7b71abc12f5e82340c3f5cac2464
 
 export default Chart;
