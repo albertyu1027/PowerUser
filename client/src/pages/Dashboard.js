@@ -59,7 +59,6 @@ class Dashboard extends Component {
                   }
                 }}
               />
-              <p>{this.state.user}</p>
             </div>
           </Container>
         </div>

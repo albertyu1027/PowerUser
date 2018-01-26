@@ -16,8 +16,8 @@ const Nav = () => (
         <Link to="/frd" className="navbar-brand">
           Compete
         </Link>
-        <Link to="/login" className="navbar-brand">
-          Login
+        <Link to="login" className="navbar-brand">
+          Logout
         </Link>
       </div>
     </div>
