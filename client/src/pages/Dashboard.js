@@ -13,7 +13,7 @@ class Dashboard extends Component{
 
   getChartData(userData){
     //Ajax call
-    API.getUploads()
+    API.getUpload(1)
       .then(res => {
         let datasets = [];
 
@@ -36,13 +36,13 @@ class Dashboard extends Component{
 
 
         // loop throuh kwh data
-        for (var i = 1; i < res.data.length; i++) {
+        for (var i = 0; i < res.data.length; i++) {
           months.push(res.data[i].kwh);
         }
           months.sort()
 
         // loop throuh cost data
-        for (var i = 1; i < res.data.length; i++) {
+        for (var i = 0; i < res.data.length; i++) {
           bills.push(res.data[i].bill);
         }
 
