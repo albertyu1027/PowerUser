@@ -25,14 +25,16 @@ class Dashboard extends Component {
     };
   }
   componentDidMount() {
-    this.setState(
-      {
-        userData: this.props.location.state.userData
-      },
-      function() {
-        console.log(this.state);
-      }
-    );
+    if (this.props.location.state) {
+      this.setState(
+        {
+          userData: this.props.location.state.userData
+        },
+        function() {
+          console.log(this.state);
+        }
+      );
+    }
   }
 
   renderContent() {
