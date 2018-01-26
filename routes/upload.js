@@ -22,7 +22,7 @@ router.post("/", upload.single("pgeCsv"), function (req, res) {
 	let splitCSV = "TYPE," + file.split("TYPE,")[1];
 
 	var uploadObject = {
-		id:"1111",
+		UserID:"1111",
 		date: "11/28/2017",
 		kwhUsage: 18.06,
 		cost: 3.63
