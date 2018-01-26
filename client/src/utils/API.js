@@ -19,15 +19,10 @@ export default {
   },
 
   signUpNewUser: function(userData) {
-<<<<<<< HEAD
     return axios.post("/auth/signup", userData);
   },
 
   loginUser: function(loginCredentials) {
     return axios.post("/auth/login", loginCredentials);
   }
-=======
-  return axios.post("/auth/signup", userData);
-}
->>>>>>> 979ca2ced42e7b71abc12f5e82340c3f5cac2464
 };
