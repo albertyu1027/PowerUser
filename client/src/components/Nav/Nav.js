@@ -1,21 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = () => (
+const Nav = props => (
   <nav className="navbar navbar-inverse sticky-top">
     <div className="container-fluid">
       <div className="navbar-header">
-        <Link to="/dash" className="navbar-brand">
+        {console.log(props)}
+        <button
+          to="/dash"
+          className="btn btn-info"
+          onClick={() => props.changePath("/home")}
+        >
           Home
-        </Link>
-
-        <Link to="/upload" className="navbar-brand">
+        </button>
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => props.changePath("/upload")}
+        >
           Upload
-        </Link>
-
-        <Link to="/frd" className="navbar-brand">
+        </button>
+        <button
+          className="btn btn-outline-success"
+          onClick={() => props.changePath("/frd")}
+        >
           Compete
-        </Link>
+        </button>
         <Link to="" className="navbar-brand">
           Logout
         </Link>

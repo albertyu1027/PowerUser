@@ -3,6 +3,8 @@ import { Bar, Line, Pie } from "react-chartjs-2";
 import { Container } from "../components/Grid";
 import { Redirect, Link } from "react-router-dom";
 import Nav from "../components/Nav";
+import Upload from "./Upload";
+import Chart from "./FrdChart";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -21,8 +23,10 @@ class Dashboard extends Component {
             ]
           }
         ]
-      }
+      },
+      pathTo: null
     };
+    this.changePath = this.changePath.bind(this);
   }
   componentDidMount() {
     //If there is user data assign it to this.state.userData
@@ -37,16 +41,39 @@ class Dashboard extends Component {
       );
     }
   }
+  changePath(text) {
+    console.log(text);
+    this.setState({
+      pathTo: text
+    });
+  }
 
   renderContent() {
     //Without User Authentication- Redirect Back to Login page
     if (!this.props.location.state) {
       return <Redirect to="/login" />;
+    }
+    if (this.state.pathTo == "/frd") {
+      return (
+        <div>
+          <Nav changePath={this.changePath} />
+          <Chart user={this.state.userData} />
+        </div>
+      );
+    }
+    if (this.state.pathTo == "/upload") {
+      return (
+        <div>
+          <Nav changePath={this.changePath} />
+
+          <Upload user={this.state.userData} />
+        </div>
+      );
     } else {
       //Otherwise return the chart data
       return (
         <div>
-          <Nav />
+          <Nav changePath={this.changePath} />
           <Container>
             <div className="chart">
               <Bar
