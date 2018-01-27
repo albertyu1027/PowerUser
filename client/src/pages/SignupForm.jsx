@@ -52,7 +52,7 @@ class SignupForm extends Component {
       if (!response.data.errmsg) {
         console.log("you're good");
         this.setState({
-          redirectTo: "/dash"
+          redirectTo: "/login"
         });
       } else {
         console.log("duplicate");

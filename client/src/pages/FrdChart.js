@@ -63,19 +63,13 @@ class Chart extends Component {
 
   // }
   componentDidMount() {
-    console.log(this.state);
+    //User data is this.props.user
     console.log(this.props);
-    // if (this.props.location.state) {
-    //   this.setState({
-    //     userData: this.props.location.state.userData
-    //   });
-    // }
   }
 
   render() {
     return (
       <div>
-        <Nav />
         <Container>
           <div className="chart">
             <h1 style={{ display: "flex", justifyContent: "center" }}>
