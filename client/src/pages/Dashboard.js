@@ -13,12 +13,15 @@ class Dashboard extends Component{
 
   getChartData(userData){
     //Ajax call
-    API.getUpload(1)
+    API.getUpload(userData)
       .then(res => {
         let datasets = [];
 
+        let monthName = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        let sortedMonthNames = [];
         let months = [];
         let bills = [];
+        let kwh = [];
         let backgroundColor = [
           'rgba(255,99,132,0.6)',
           'rgba(255, 0, 0, 0.3)',
@@ -34,23 +37,35 @@ class Dashboard extends Component{
           'rgba(255,99,132,0.6)'
         ];
 
-        // loop throuh kwh data
+        // loop throuh month data
         for (var i = 0; i < res.data.length; i++) {
-          months.push(res.data[i].kwh);
+          months.push(res.data[i].date);
         }
           months.sort()
+
+          // loop throuh sorted month data
+          for (var i = 0; i < months.length; i++) {
+            sortedMonthNames.push(monthName[(months[i]-1)]);
+          }
+
+          console.log(sortedMonthNames);
 
         // loop throuh cost data
         for (var i = 0; i < res.data.length; i++) {
           bills.push(res.data[i].bill);
         }
 
+        // loop throuh kwh data
+        for (var i = 0; i < res.data.length; i++) {
+          kwh.push(res.data[i].kwh);
+        }
+
         // loop throuh cost data
         for (var i = 0; i<months.length; i++){
           var dataset = {
-            label:months[i],
+            label:sortedMonthNames[i],
             backgroundColor: backgroundColor[i],
-            data: [bills[i]]
+            data: [kwh[i]]
           }
           datasets.push(dataset)
         }
@@ -59,11 +74,11 @@ class Dashboard extends Component{
         console.log(months);
         this.setState({
           KwhChartData:{
-            labels: months,
+            labels: sortedMonthNames,
             datasets: datasets
           },
           CostChartData:{
-            labels: months,
+            labels: sortedMonthNames,
             datasets:[
               {
                 label:'population',
@@ -80,7 +95,7 @@ class Dashboard extends Component{
 
 
   componentDidMount(){
-      this.getChartData();
+      this.getChartData(1);
     }
 
 
