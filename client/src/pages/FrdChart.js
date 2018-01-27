@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Bar} from 'react-chartjs-2';
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
+
 class Chart extends Component {
   constructor(props){
     super(props);
@@ -35,17 +36,22 @@ class Chart extends Component {
 
 //need to add a function to refresh the chart.
 
+    // componentDidMount() {
+    //  this.loadBooks();
+    // }
+
+    // loadBooks = () => {
+    // API.getBooks()
+    //   .then(res =>
+    //     this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+    //   )
+    //   .catch(err => console.log(err));
+    // };
+
     addFriend = event => {
       var searchEmail = prompt("What is your friend's email address?")
       console.log(searchEmail)
     }
-
-    // sumThings = event => {
-    //   for (var i=0; i<4; i++){
-    //     {this.state.chartData.datasets[i].data}
-    //   }
-
-    // }
 
     render() {
       return (

@@ -30,15 +30,15 @@ class Dashboard extends Component{
     loadUpload = () => {
       API.getUploads()
         .then(res => {
-          let newlabels = this.state.chartData.labels.slice()
-          newlabels.push(100)
-          console.log(newlabels)
-          this.setState({labels:newlabels})
+          // let newlabels = this.state.chartData.labels.slice()
+          // newlabels.push(100)
+          // console.log(newlabels)
+          // this.setState({labels:newlabels})
 
            // this.setState({ 'labels': this.state.chartData.labels.concat([100])});
            // console.log(this.state.chartData.labels)
          // this.state.chartData.labels[0]=res.data[1].kwh;
-         //  //console.log(res.data[1].kwh)
+          // console.log(res.data)
        })
         .catch(err => console.log(err));
     };
