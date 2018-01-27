@@ -7,7 +7,7 @@ class Upload extends Component {
     super();
   }
   componentDidMount() {
-    console.log(this.state);
+    //User data is this.props.user
     console.log(this.props);
   }
   fileInput(event) {

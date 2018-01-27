@@ -63,7 +63,7 @@ class Chart extends Component {
 
   // }
   componentDidMount() {
-    console.log(this.state);
+    //User data is this.props.user
     console.log(this.props);
   }
 
