@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
+import Nav from "../components/Nav";
 class Upload extends Component {
-
   constructor() {
     super();
   }
@@ -33,22 +33,42 @@ class Upload extends Component {
 
   render() {
     return (
-      <Container>
-        <div className="row" style={ { "paddingTop": "25px" } }>
-          <div className="col-sm-12">
-            <h3>Select a text file:</h3>
-            <form action="/api/upload" encType="multipart/form-data" method="post">
-              <div class="form-group">
-                <input type="file" className="form-control" onChange={ this.fileInput } name="pgeCsv" id="pgeCsv" />
-              </div>
-              <button type="submit" className="btn btn-primary">Upload</button>
-            </form>
-            <p id="fileData" style={ { "paddingTop": "25px", fontSize: "22px" } }></p>
-            <p id="fileContent" style={ { "paddingTop": "25px", fontSize: "22px" } }></p>
+      <div>
+        <Container>
+          <div className="row" style={{ paddingTop: "25px" }}>
+            <div className="col-sm-12">
+              <h3>Select a text file:</h3>
+              <form
+                action="/api/upload"
+                encType="multipart/form-data"
+                method="post"
+              >
+                <div className="form-group">
+                  <input
+                    type="file"
+                    className="form-control"
+                    onChange={this.fileInput}
+                    name="pgeCsv"
+                    id="pgeCsv"
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Upload
+                </button>
+              </form>
+              <p
+                id="fileData"
+                style={{ paddingTop: "25px", fontSize: "22px" }}
+              />
+              <p
+                id="fileContent"
+                style={{ paddingTop: "25px", fontSize: "22px" }}
+              />
+            </div>
           </div>
-        </div>
-      </Container>
-    )
+        </Container>
+      </div>
+    );
   }
 }
 

@@ -75,7 +75,6 @@ class Chart extends Component {
   render() {
     return (
       <div>
-        <Nav />
         <Container>
           <div className="chart">
             <h1 style={{ display: "flex", justifyContent: "center" }}>
