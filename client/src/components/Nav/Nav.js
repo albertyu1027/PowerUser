@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './nav.css';
 
 const Nav = props => (
   <nav className="navbar navbar-inverse sticky-top">
@@ -25,7 +26,7 @@ const Nav = props => (
         >
           Compete
         </button>
-        <Link to="" className="navbar-brand">
+        <Link to="" className="navbar-brand pull-right">
           Logout
         </Link>
       </div>
