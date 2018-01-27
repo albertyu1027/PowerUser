@@ -34,7 +34,6 @@ class Dashboard extends Component{
           'rgba(255,99,132,0.6)'
         ];
 
-
         // loop throuh kwh data
         for (var i = 0; i < res.data.length; i++) {
           months.push(res.data[i].kwh);
