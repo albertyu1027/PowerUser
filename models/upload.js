@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const UploadSchema = new Schema({
   UserID: String,
-  name: String,
+  date: Number,
   kwh: Number,
   bill: Number
 });
