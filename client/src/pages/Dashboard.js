@@ -57,17 +57,16 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart />
+          <Chart user={this.state.userData} />
         </div>
       );
     }
     if (this.state.pathTo == "/upload") {
       return (
         <div>
-          {console.log(this.state)}
           <Nav changePath={this.changePath} />
 
-          <Upload />
+          <Upload user={this.state.userData} />
         </div>
       );
     } else {

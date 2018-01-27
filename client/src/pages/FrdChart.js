@@ -65,11 +65,6 @@ class Chart extends Component {
   componentDidMount() {
     console.log(this.state);
     console.log(this.props);
-    // if (this.props.location.state) {
-    //   this.setState({
-    //     userData: this.props.location.state.userData
-    //   });
-    // }
   }
 
   render() {

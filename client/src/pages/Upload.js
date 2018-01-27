@@ -6,7 +6,10 @@ class Upload extends Component {
   constructor() {
     super();
   }
-
+  componentDidMount() {
+    console.log(this.state);
+    console.log(this.props);
+  }
   fileInput(event) {
     var file = event.target.files[0];
     var textType = /text.*/;
