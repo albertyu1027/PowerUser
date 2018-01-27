@@ -3,7 +3,7 @@ const router = require("express").Router();
 const authRoutes = require("./auth");
 const User = require("../models/user");
 const passport = require("../passport");
-const uploadRoutes = require("./upload");
+const uploadRoutes = require("./uploads/upload");
 const apiRoutes = require("./api");
 
 // API Routes
