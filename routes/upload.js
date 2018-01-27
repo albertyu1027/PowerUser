@@ -14,37 +14,56 @@ var upload = multer({
 });
 
 router.post("/", upload.single("pgeCsv"), function (req, res) {
-
-	/* ============================== TESTING FILE RESPONSE ============================== */
 	// req.body will hold the text fields, if there were any
 	// req.file is the `pgeData` file
 	let file = req.file.buffer.toString().trim();
 	let splitCSV = "TYPE," + file.split("TYPE,")[1];
 
-	var uploadObject = {
-		UserID:"1111",
-		date: "11/28/2017",
-		kwhUsage: 18.06,
-		cost: 3.63
-	};
+	let id = 111111,
+		monthNumber = null,
+		usage = 0,
+		usage_cost = 0;
 
 	csv({
 			noheader: false
 		})
 		.fromString(splitCSV)
 		.on('csv', (csvRow) => {
-			console.log("CSV Row:", csvRow);
+			// Store the date 
+			var row_date = new Date(csvRow[1]);
+			var row_usage = Number(csvRow[4]);
+			var row_cost = stripDollarSign(csvRow[6]);
+
+			monthNumber = getMonthNumber(row_date);
+			usage += row_usage;
+			usage_cost += row_cost;
 
 		})
 		.on('done', () => {
-			upload = new UploadData(uploadObject);
-			upload.save().then((savedData)=>{
-				console.log("PG&E Data uploaded:", savedData);
-				res.send("Complete");
+			// upload = new UploadData(uploadObject);
+			// upload.save().then((savedData)=>{
+			//console.log("PG&E Data uploaded:", savedData);
+			res.json({
+				UserID: id,
+				date: monthNumber,
+				kwhUsage: Math.round(usage,2),
+				cost: Math.round(usage_cost,2)
 			});
+			// });
 		});
-	/* ============================== TESTING FILE RESPONSE ============================== */
-
 });
+
+function stripDollarSign(row_cost) {
+	// Split the cost string into an array, keeping the second item in the array which is the cost
+	// The first [0], is the US dollar sign.
+	let amount = Number(row_cost.split("$")[1]);
+	// Return the amount as a number without the dollar sign.
+	return amount;
+}
+
+function getMonthNumber(row_date) {
+	var date = new Date(row_date);
+	return (date.getMonth());
+}
 
 module.exports = router;
