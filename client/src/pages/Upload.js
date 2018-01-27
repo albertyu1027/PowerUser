@@ -16,9 +16,7 @@ class Upload extends Component {
     var details = {
       name: file.name,
       type: file.type,
-      size: file.size,
-      // userName: this.props.user.local.username,
-      // userId: this.props.user._id 
+      size: file.size
     };
 
     document.getElementById("fileData").innerText = JSON.stringify(details);
@@ -44,22 +42,14 @@ class Upload extends Component {
             <h3>Select a text file:</h3>
             <form action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
               <div className="form-group">
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={this.fileInput}
-                    name="pgeCsv"
-                    id="pgeCsv"
-                  />
+                  <input type="file" className="form-control" onChange={this.fileInput} name="pgeCsv" id="pgeCsv"/>
+                  <input type="text" style={{"display":"none"}} name="username" id="username" value={this.props.user.local.username}/>
+                  <input type="text" style={{"display":"none"}} name="userid" id="userid" value={this.props.user._id}/>
                 </div>
                 <button type="submit" className="btn btn-primary">
                   Upload
                 </button>
               </form>
-              <p>
-                Username: {this.props.user.local.username} <br />
-                User ID: {this.props.user._id}
-              </p>
               <p
                 id="fileData"
                 style={{ paddingTop: "25px", fontSize: "22px" }}
