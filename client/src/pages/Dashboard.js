@@ -10,6 +10,14 @@ const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
 const frdData = [133,411,411,411,411,411,300,400,411, 411,411,411];
 
 class Dashboard extends Component {
+  //include this in dashboard
+  addFriend = event => {
+    var searchEmail = prompt("What is your friend's email address?");
+    console.log(searchEmail);
+    //newdata will be API call to upload model
+  };
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +68,7 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} initialData={data} addfriend={frdData}/>
+          <Chart user={this.state.userData} initialData={data} addfriend1={frdData}/>
         </div>
       );
     }

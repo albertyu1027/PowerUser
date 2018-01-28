@@ -33,17 +33,17 @@ class Chart extends Component {
           {
             label: "",
             backgroundColor: "#8e5ea2",
-            data: this.props.addfriend,
+            data: this.props.addfriend1,
           },
           {
             label: "",
             backgroundColor: "#C14242",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            data: this.props.addfriend2,
           },
           {
             label: "",
             backgroundColor: "#433FBF",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            data: this.props.addfriend3,
           }
         ]
       }
@@ -52,21 +52,16 @@ class Chart extends Component {
 
   //need to add a function to refresh the chart.
 
-//include this in dashboard
-  addFriend = event => {
-    var searchEmail = prompt("What is your friend's email address?");
-    console.log(searchEmail);
-    //newdata will be API call to upload model
-  };
+
 
   componentDidMount() {
     //User data is this.props.user
     console.log(this.props);
 
     //newdata will be API call to upload model
-    var newdata = [133,411,411,411,411,411,411,411,411, 411,411,411];
+    // var newdata = [133,411,411,411,411,411,411,411,411, 411,411,411];
 
-    var newdata2 = {label: "Albert", backgroundColor: "#433FBF", data: newdata};
+    // var newdata2 = {label: "Albert", backgroundColor: "#433FBF", data: newdata};
     // var what = (this.state.chartData.datasets[0].data);
     // var what2= {label: this.state.chartData.datasets[0].label,
     //             backgroundColor: "#433FBF", 
@@ -111,7 +106,6 @@ class Chart extends Component {
             <br />
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{ display: "flex", justifyContent: "center" }}>
                 <button
                   type="button"
                   className="btn btn-outline-success"
@@ -121,6 +115,7 @@ class Chart extends Component {
                 </button>
               </div>
               <br />
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <h2> Leaderboard </h2>
               <ul>First Place 😎 - {this.state.chartData.datasets[1].label}</ul>
               <ul>
