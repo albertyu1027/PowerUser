@@ -39,6 +39,19 @@ class SignupForm extends Component {
   //   else if (length > 5) return "warning";
   //   else if (length > 0) return "error";
   // }
+
+  lengthCheck(string) {
+    // console.log(string.length);
+    if (string.length > 5) {
+      return true;
+    }
+  }
+
+  passwordCheck(pass1, pass2) {
+    if (pass1 === pass2 && pass2) {
+      return true;
+    }
+  }
   handleSubmit(event) {
     event.preventDefault();
     // TODO - validate!
@@ -71,7 +84,15 @@ class SignupForm extends Component {
               controlId="formBasicText"
               // validationState={this.getValidationState()}
             > */}
-            <h1>Sign Up!!!</h1>
+            <h1
+              style={{
+                color: "blue",
+                textAlign: "center",
+                marginBottom: "30px"
+              }}
+            >
+              Sign Up!!!
+            </h1>
 
             <div className="input-group with-addon-icon-left">
               <span className="input-group-addon">
@@ -80,11 +101,21 @@ class SignupForm extends Component {
               <input
                 type="email"
                 name="username"
-                className="form-control"
+                className={
+                  this.lengthCheck(this.state.username)
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
                 placeholder="Enter Your Email"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
+              <div className="valid-feedback">
+                The Force Is Strong With This One...
+              </div>
+              <div className="invalid-feedback">
+                Your Powers Are Weak Old Man!
+              </div>
             </div>
             <div className="input-group with-addon-icon-left">
               <span className="input-group-addon">
@@ -122,9 +153,17 @@ class SignupForm extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
-                className="form-control"
+                className={
+                  this.lengthCheck(this.state.password)
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
                 placeholder="Enter Your Password"
               />
+              <div className="valid-feedback">Winter Is Coming</div>
+              <div className="invalid-feedback">
+                We'll Need Something Stronger
+              </div>
             </div>
 
             <div className="input-group with-addon-icon-left">
@@ -136,9 +175,22 @@ class SignupForm extends Component {
                 name="confirmPassword"
                 value={this.state.confirmPassword}
                 onChange={this.handleChange}
-                className="form-control"
+                className={
+                  this.passwordCheck(
+                    this.state.password,
+                    this.state.confirmPassword
+                  )
+                    ? "form-control is-valid"
+                    : "form-control is-invalid"
+                }
                 placeholder="Confirm Your Password"
               />
+              <div className="valid-feedback">
+                You Have Chosen Wisely. Your Passwords Match!
+              </div>
+              <div className="invalid-feedback">
+                You Have Chosen Unwisely. Your Passwords Do Not Match!
+              </div>
             </div>
             <button
               id="signup-button"
@@ -151,7 +203,13 @@ class SignupForm extends Component {
                   this.state.password &&
                   this.state.confirmPassword &&
                   this.state.city &&
-                  this.state.stateLocation
+                  this.state.stateLocation &&
+                  this.passwordCheck &&
+                  this.passwordCheck(
+                    this.state.password,
+                    this.state.confirmPassword
+                  ) &&
+                  this.lengthCheck(this.state.password)
                 )
               }
             >
