@@ -19,7 +19,8 @@ router.post("/", upload.single("pgeCsv"), function (req, res) {
 	let file = req.file.buffer.toString().trim();
 	let splitCSV = "TYPE," + file.split("TYPE,")[1];
 
-	let id = 111111,
+	let id = req.body.userid,
+		email = req.body.username,
 		monthNumber = null,
 		usage = 0,
 		usage_cost = 0;
@@ -45,6 +46,7 @@ router.post("/", upload.single("pgeCsv"), function (req, res) {
 			//console.log("PG&E Data uploaded:", savedData);
 			res.json({
 				UserID: id,
+				username: email,
 				date: monthNumber,
 				kwhUsage: Math.round(usage,2),
 				cost: Math.round(usage_cost,2)
