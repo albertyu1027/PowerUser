@@ -6,6 +6,9 @@ import Nav from "../components/Nav";
 import Upload from "./Upload";
 import Chart from "./FrdChart";
 
+const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData = [133,411,411,411,411,411,300,400,411, 411,411,411];
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +60,7 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} />
+          <Chart user={this.state.userData} initialData={data} addfriend={frdData}/>
         </div>
       );
     }

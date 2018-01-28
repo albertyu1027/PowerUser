@@ -26,14 +26,14 @@ class Chart extends Component {
         ],
         datasets: [
           {
-            label: "albert",
+            label: this.props.user.local.username,
             backgroundColor: "#3e95cd",
-            data: [],
+            data: this.props.initialData,
           },
           {
             label: "",
             backgroundColor: "#8e5ea2",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            data: this.props.addfriend,
           },
           {
             label: "",
@@ -52,16 +52,12 @@ class Chart extends Component {
 
   //need to add a function to refresh the chart.
 
-
+//include this in dashboard
   addFriend = event => {
     var searchEmail = prompt("What is your friend's email address?");
     console.log(searchEmail);
     //newdata will be API call to upload model
-    var newdata = [133,411,411,411,411,411,411,411,411, 411,411,411];
   };
-
-
-
 
   componentDidMount() {
     //User data is this.props.user
@@ -71,22 +67,24 @@ class Chart extends Component {
     var newdata = [133,411,411,411,411,411,411,411,411, 411,411,411];
 
     var newdata2 = {label: "Albert", backgroundColor: "#433FBF", data: newdata};
-    var what = (this.state.chartData.datasets[0].data);
-    var what2= {label: this.state.chartData.datasets[0].label,
-                backgroundColor: "#433FBF", 
-                data: newdata}
-    console.log(what2);
-    console.log(what = newdata.slice(0));
+    // var what = (this.state.chartData.datasets[0].data);
+    // var what2= {label: this.state.chartData.datasets[0].label,
+    //             backgroundColor: "#433FBF", 
+    //             data: newdata}
+    // console.log(what);
+    // console.log(what2);
+    // console.log(what = newdata.slice(0));
     
   // this.setState = update(this.state, {
   // chartData: {datasets: {$splice: [[0, 0, newdata2]]}}
   // });
 
-    this.setState = update(this.state.chartData.datasets, {0: {data: {$splice:
-      [[0, 0, newdata]]
-    }}});
-    console.log(this.setState)
-    console.log(this.state)
+    // this.setState = update(this.state.chartData.datasets, {0: {data: {$push:
+    // newdata
+    // }}});
+    // // this.setState= this.state.chartData.datasets[0].data.splice(0,0, newdata)
+    // console.log(this.setState)
+    // console.log(this.state)
 
 
 //   function addData(chart, label, data) {
@@ -99,6 +97,7 @@ class Chart extends Component {
   }
 
   render() {
+    console.log('this.props of Chart: ', this.props)
     return (
       <div>
         <Container>
