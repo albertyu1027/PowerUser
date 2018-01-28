@@ -41,17 +41,26 @@ router.post("/", upload.single("pgeCsv"), function (req, res) {
 
 		})
 		.on('done', () => {
-			// upload = new UploadData(uploadObject);
-			// upload.save().then((savedData)=>{
-			//console.log("PG&E Data uploaded:", savedData);
-			res.json({
+
+			let dataToUpload = {
 				UserID: id,
 				username: email,
 				date: monthNumber,
-				kwhUsage: Math.round(usage,2),
-				cost: Math.round(usage_cost,2)
+				kwhUsage: Math.round(usage, 2),
+				cost: Math.round(usage_cost, 2)
+			}
+
+			upload = new UploadData(dataToUpload);
+			upload.save().then((savedData) => {
+				console.log("PG&E Data uploaded:", savedData);
+				res.json({
+					UserID: id,
+					username: email,
+					date: monthNumber,
+					kwhUsage: Math.round(usage, 2),
+					cost: Math.round(usage_cost, 2)
+				});
 			});
-			// });
 		});
 });
 
