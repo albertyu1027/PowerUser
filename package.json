@@ -1,7 +1,7 @@
 {
-  "name": "mern-stack",
+  "name": "poweruser",
   "version": "1.0.0",
-  "description": "Mern Stack Starter Pack",
+  "description": "Application that parses CSV files and displays that data with Chart.js. That data is compared to customer data provided by PG&E.",
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
@@ -10,6 +10,14 @@
     "build": "node scripts/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:albertyu1027/PowerUser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/albertyu1027/PowerUser/issues"
+  },
+  "homepage": "https://github.com/albertyu1027/PowerUser#readme",
   "author": "",
   "license": "ISC",
   "devDependencies": {

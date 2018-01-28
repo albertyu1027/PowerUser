@@ -36,24 +36,15 @@ class Upload extends Component {
 
   render() {
     return (
-      <div>
-        <Container>
-          <div className="row" style={{ paddingTop: "25px" }}>
-            <div className="col-sm-12">
-              <h3>Select a text file:</h3>
-              <form
-                action="/api/upload"
-                encType="multipart/form-data"
-                method="post"
-              >
-                <div className="form-group">
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={this.fileInput}
-                    name="pgeCsv"
-                    id="pgeCsv"
-                  />
+      <Container>
+        <div className="row" style={ { "paddingTop": "25px" } }>
+          <div className="col-sm-12">
+            <h3>Select a text file:</h3>
+            <form action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
+              <div className="form-group">
+                  <input type="file" className="form-control" onChange={this.fileInput} name="pgeCsv" id="pgeCsv"/>
+                  <input type="text" style={{"display":"none"}} name="username" id="username" value={this.props.user.local.username}/>
+                  <input type="text" style={{"display":"none"}} name="userid" id="userid" value={this.props.user._id}/>
                 </div>
                 <button type="submit" className="btn btn-primary">
                   Upload
@@ -69,9 +60,8 @@ class Upload extends Component {
               />
             </div>
           </div>
-        </Container>
-      </div>
-    );
+      </Container>
+    )
   }
 }
 
