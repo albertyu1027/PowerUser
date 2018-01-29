@@ -5,15 +5,17 @@ button:focus {
   outline: none;
 }
 
-.box__dragndrop,
-.box__uploading,
-.box__success,
-.box__error {
-  display: none;
+
+
+.alert.alert-danger,
+.alert.alert-info,
+.alert.alert-success
+ {
+  display: block;
 }
 
 .box {
-  border: 3px dashed #DADFE3;
+  border: 3px dashed #e9ecef;
   border-radius: 15px;
   height: 80vh;
   text-align: center;
