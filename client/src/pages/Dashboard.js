@@ -25,10 +25,7 @@ class Dashboard extends Component {
     this.changePath = this.changePath.bind(this);
   }
 
-
-
-  componentDidMount() {
-    this.getChartData(1);
+ 
     getChartData(userData){
     //Ajax call
     API.getUpload(userData)
@@ -109,9 +106,10 @@ class Dashboard extends Component {
 
       })
       .catch(err => console.log(err));  
+    }
     
-    
-    
+  componentDidMount() {
+    this.getChartData(1);   
   var costData = []
   API.getUploads()
   .then(res => {
