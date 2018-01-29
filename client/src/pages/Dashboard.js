@@ -5,11 +5,12 @@ import { Redirect, Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import Upload from "./Upload";
 import Chart from "./FrdChart";
+import API from "../utils/API";
 
 const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
-const frdData1 = [133,411,411,411,411,411,300,400,411, 411,411,411];
-const frdData2 = [133,411,411,411,411,411,300,400,411, 411,411,411];
-const frdData3 = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData1 = [0,0,0,0,0,0,0,0,0,0,0,0];
+const frdData2 = [0,0,0,0,0,0,0,0,0,0,0,0];
+const frdData3 = [0,0,0,0,0,0,0,0,0,0,0,0];
 
 class Dashboard extends Component {
   constructor(props) {
@@ -34,9 +35,21 @@ class Dashboard extends Component {
     this.changePath = this.changePath.bind(this);
   }
 
-
-  
   componentDidMount() {
+
+  var costData = []
+  API.getUploads()
+  .then(res => {
+    for (var i=0; i<res.data.length; i++){
+    costData.push(res.data[i].cost)
+    console.log(costData)
+    }
+
+  })
+
+  .catch(err => console.log(err));
+
+
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
