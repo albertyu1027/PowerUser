@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import Nav from "../components/Nav";
+import "../css/upload.css";
 class Upload extends Component {
   constructor() {
     super();
@@ -34,32 +35,39 @@ class Upload extends Component {
     }
   }
 
+  drop_handler(event) {
+    event.preventDefault();
+    console.log(event);
+  }
+
+  dragover_handler(event) {
+    event.preventDefault();
+    console.log(event);
+  }
+
   render() {
     return (
       <Container>
         <div className="row" style={ { "paddingTop": "25px" } }>
           <div className="col-sm-12">
-            <h3>Select a text file:</h3>
-            <form action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
-              <div className="form-group">
-                  <input type="file" className="form-control" onChange={this.fileInput} name="pgeCsv" id="pgeCsv"/>
-                  <input type="text" style={{"display":"none"}} name="username" id="username" value={this.props.user.local.username}/>
-                  <input type="text" style={{"display":"none"}} name="userid" id="userid" value={this.props.user._id}/>
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Upload
-                </button>
-              </form>
-              <p
-                id="fileData"
-                style={{ paddingTop: "25px", fontSize: "22px" }}
-              />
-              <p
-                id="fileContent"
-                style={{ paddingTop: "25px", fontSize: "22px" }}
-              />
-            </div>
+            <form className="box" action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
+              <div className="box__input">
+                <input type="file" className="box__file" onChange={ this.fileInput } onDrop={this.drop_handler} onDragOver={this.drop_handler} name="pgeCsv" id="pgeCsv" />
+                <label htmlFor="file"><strong>Choose a file</strong><span className="box__dragndrop"> or drag it here</span>.</label>
+                <input type="text" style={ { "display": "none" } } name="username" id="username" defaultValue={ this.props.user.local.username } />
+                <input type="text" style={ { "display": "none" } } name="userid" id="userid" defaultValue={ this.props.user._id } />
+              </div>
+              <button type="submit" className="box__button">
+                Upload
+              </button>
+              <div className="box__uploading">Uploading…</div>
+              <div className="box__success">Done!</div>
+              <div className="box__error">Error! <span></span>.</div>
+            </form>
+            {/* <p id="fileData" style={ { paddingTop: "25px", fontSize: "22px" } } />
+            <p id="fileContent" style={ { paddingTop: "25px", fontSize: "22px" } } /> */}
           </div>
+        </div>
       </Container>
     )
   }
