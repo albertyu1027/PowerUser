@@ -7,6 +7,13 @@ import Upload from "./Upload";
 import Chart from "./FrdChart";
 import API from "../utils/API";
 
+
+const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData1 = [0,0,0,0,0,0,0,0,0,0,0,0];
+const frdData2 = [0,0,0,0,0,0,0,0,0,0,0,0];
+const frdData3 = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +25,11 @@ class Dashboard extends Component {
     this.changePath = this.changePath.bind(this);
   }
 
-  getChartData(userData){
+
+
+  componentDidMount() {
+    this.getChartData(1);
+    getChartData(userData){
     //Ajax call
     API.getUpload(userData)
       .then(res => {
@@ -97,12 +108,24 @@ class Dashboard extends Component {
         });
 
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => console.log(err));  
+    
+    
+    
+  var costData = []
+  API.getUploads()
+  .then(res => {
+    for (var i=0; i<res.data.length; i++){
+    costData.push(res.data[i].cost)
+    console.log(costData)
+    }
 
-  componentDidMount() {
-    this.getChartData(1);
+  })
 
+  .catch(err => console.log(err));
+
+    
+    
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
@@ -131,7 +154,11 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} />
+          <Chart user={this.state.userData} 
+                initialData={data} 
+                addfriend1={frdData1}
+                addfriend2={frdData2}
+                addfriend3={frdData3}/>
         </div>
       );
     }
