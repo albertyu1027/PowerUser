@@ -52,43 +52,16 @@ class Chart extends Component {
 
   //need to add a function to refresh the chart.
 
-
+//include this in dashboard
+  addFriend = event => {
+    var searchEmail = prompt("What is your friend's email address?");
+    console.log(searchEmail);
+    //newdata will be API call to upload model
+  };
 
   componentDidMount() {
     //User data is this.props.user
     console.log(this.props);
-
-    //newdata will be API call to upload model
-    // var newdata = [133,411,411,411,411,411,411,411,411, 411,411,411];
-
-    // var newdata2 = {label: "Albert", backgroundColor: "#433FBF", data: newdata};
-    // var what = (this.state.chartData.datasets[0].data);
-    // var what2= {label: this.state.chartData.datasets[0].label,
-    //             backgroundColor: "#433FBF", 
-    //             data: newdata}
-    // console.log(what);
-    // console.log(what2);
-    // console.log(what = newdata.slice(0));
-    
-  // this.setState = update(this.state, {
-  // chartData: {datasets: {$splice: [[0, 0, newdata2]]}}
-  // });
-
-    // this.setState = update(this.state.chartData.datasets, {0: {data: {$push:
-    // newdata
-    // }}});
-    // // this.setState= this.state.chartData.datasets[0].data.splice(0,0, newdata)
-    // console.log(this.setState)
-    // console.log(this.state)
-
-
-//   function addData(chart, label, data) {
-//     chart.data.labels.push(label);
-//     chart.data.datasets.forEach((dataset) => {
-//         dataset.data.push(data);
-//     });
-//     chart.update();
-// }
   }
 
   render() {
@@ -116,6 +89,7 @@ class Chart extends Component {
               </div>
               <br />
             <div style={{ display: "flex", justifyContent: "center" }}>
+
               <h2> Leaderboard </h2>
               <ul>First Place 😎 - {this.state.chartData.datasets[1].label}</ul>
               <ul>

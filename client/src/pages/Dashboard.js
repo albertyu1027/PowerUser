@@ -7,17 +7,11 @@ import Upload from "./Upload";
 import Chart from "./FrdChart";
 
 const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
-const frdData = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData1 = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData2 = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const frdData3 = [133,411,411,411,411,411,300,400,411, 411,411,411];
 
 class Dashboard extends Component {
-  //include this in dashboard
-  addFriend = event => {
-    var searchEmail = prompt("What is your friend's email address?");
-    console.log(searchEmail);
-    //newdata will be API call to upload model
-  };
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +33,9 @@ class Dashboard extends Component {
     };
     this.changePath = this.changePath.bind(this);
   }
+
+
+  
   componentDidMount() {
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
@@ -68,7 +65,11 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} initialData={data} addfriend1={frdData}/>
+          <Chart user={this.state.userData} 
+                initialData={data} 
+                addfriend1={frdData1}
+                addfriend2={frdData2}
+                addfriend3={frdData3}/>
         </div>
       );
     }
