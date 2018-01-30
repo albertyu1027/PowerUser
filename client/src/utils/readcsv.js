@@ -12,11 +12,13 @@ let fileInput = (event) => {
     // document.getElementById("fileContent").innerText = reader.result;
     // };
     // // reader.readAsText(file);
+    console.log(document.getElementById("pgeCsvForm"));
   } else {
-    document.getElementById("alert_danger").innerText = "Unsupported file type! File must be a csv!";
-    document.getElementById("alert_danger").style.display = "block";
+    var danger = document.getElementById("alert_danger");
+    danger.innerText = "Unsupported file type! File must be a csv!";
+    danger.style.display = "block";
     setTimeout(() => {
-      document.getElementById("alert_danger").style.display = "none";
+      danger.style.display = "none";
     }, 3000);
   }
 };
@@ -30,7 +32,7 @@ let drop_handler = (event) => {
   event.preventDefault();
   fileInput(event);
   var form = document.getElementById("pgeCsvForm");
-  form.classList.remove("file__correct","file__incorrect");
+  form.classList.remove("file__correct", "file__incorrect");
 };
 
 let dragover_handler = (event) => {
@@ -49,14 +51,14 @@ let dragover_handler = (event) => {
 let dragexit_handler = (event) => {
   event.preventDefault();
   var form = document.getElementById("pgeCsvForm");
-  form.classList.remove("file__correct","file__incorrect");
+  form.classList.remove("file__correct", "file__incorrect");
 };
 
 function displayFileData(file) {
   document.getElementById("fileData").innerHTML =
-  `<div><strong>File name:</strong> ${file.name}\n
+    `<div><strong>File name:</strong> ${file.name}\n
   <div><strong>File type:</strong> ${file.type}\n
-  <div><strong>File type:</strong> ${file.size}\n`;
+  <div><strong>File size:</strong> ${file.size}\n`;
 }
 
 export {
