@@ -1,83 +1,57 @@
+// Setup React
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// Import page components
 import { Container } from "../components/Grid";
 import Nav from "../components/Nav";
 import "../css/upload.css";
 import Alert from "../components/Upload/Alert";
 import Modal from "../components/Upload/Modal";
+import * as utils from "../utils/readcsv";
+
 class Upload extends Component {
   constructor() {
     super();
   }
-  componentDidMount() {
-    //User data is this.props.user
-    console.log(this.props);
-  }
-  fileInput(event) {
-    var file = event.target.files[0];
-    var textType = /text.*/;
-    var details = {
-      name: file.name,
-      type: file.type,
-      size: file.size
-    };
 
-    document.getElementById("fileData").innerText = JSON.stringify(details);
-
-    if (file.type.match(textType)) {
-      var reader = new FileReader();
-
-      reader.onload = function() {
-        document.getElementById("fileContent").innerText = reader.result;
-      };
-
-      reader.readAsText(file);
-    } else {
-      document.getElementById("fileContent").innerText = "File not supported!";
-    }
-  }
-
-  drop_handler(event) {
-    event.preventDefault();
-    console.log(event.dataTransfer.items[0].kind);
-    console.log(event.dataTransfer.items[0].type);
-  }
-
-  dragover_handler(event) {
-    event.preventDefault();
-    document.getElementById("pgeCsvForm").style.borderColor = "#00b8d8";
-  }
-
-  dragexit_handler(event) {
-    event.preventDefault();
-    console.log(event.type);
-    document.getElementById("pgeCsvForm").style.borderColor = "#e9ecef";
-  }
+  // Setup utility methods
+  fileInput = utils.fileInput;
+  drop_handler = utils.drop_handler;
+  dragover_handler = utils.dragover_handler;
+  dragexit_handler = utils.dragexit_handler;
 
   render() {
     return (
       <Container>
         <div className="row" style={ { "paddingTop": "25px" } }>
+          { /* Upload status alerts */ }
           <Alert/>
           <div className="col-sm-12">
-            <form id="pgeCsvForm" className="box" action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
-              <input type="file" className="box__file" onChange={ this.fileInput } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
+            { /* Drag and drop form */ }
+            <form id="pgeCsvForm" className="drag__form" encType="multipart/form-data" method="post">
+              { /* File input */ }
+              <input type="file" className="drag__file" onChange={ this.fileInput } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
                 name="pgeCsv" id="pgeCsv" />
-              <label htmlFor="file"><strong>Choose a file</strong><span className="box__dragndrop"> or drag it here</span>.</label>
-              <input type="text" style={ { "display": "none" } } name="username" id="username" defaultValue={ this.props.user.local.username } />
-              <input type="text" style={ { "display": "none" } } name="userid" id="userid" defaultValue={ this.props.user._id } />
-              <button type="submit" className="box__button">
+              <label htmlFor="file"><strong>Choose a file</strong><span className="drag__choose"> or drag it here</span>.</label>
+              { /* Hidden fields with username/id. */ }
+              <input type="text" name="username" id="username" defaultValue={ this.props.user.local.username } />
+              <input type="text" name="userid" id="userid" defaultValue={ this.props.user._id } />
+              { /* Display file data and content */ }
+              <p id="fileData" style={ { paddingTop: "25px", fontSize: "22px" } }></p>
+              <p id="fileContent" style={ { paddingTop: "25px", fontSize: "22px" } }></p>
+              { /* Form submit button */ }
+              <button type="submit" className="drag__submit">
                 Upload
               </button>
             </form>
           </div>
-          <div className="col-sm-12">
-              {/* <p id="fileData" style={ { paddingTop: "25px", fontSize: "22px" } } />
-              <p id="fileContent" style={ { paddingTop: "25px", fontSize: "22px" } } /> */}
-              <button type="button" className="btn btn-primary text-center" data-toggle="modal" data-target="#exampleModal">
+          { /* Button that opens the information/how-to modal */ }
+          <div className="col-sm-12 text-center" id="info-toggle">
+            <button type="button" className="btn btn-light" data-toggle="modal" data-target="#howto">
               <i className="fa fa-info" aria-hidden="true"></i>
-              </button>
-            </div>
+            </button>
+          </div>
+          { /* Modal component */ }
           <Modal />
         </div>
       </Container>
