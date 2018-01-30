@@ -110,9 +110,6 @@ class Dashboard extends Component {
 
 
    componentDidMount() {
-    this.getChartData("5a6fee5c8cea42a76ce8089f");
-
-
 
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
@@ -122,9 +119,13 @@ class Dashboard extends Component {
         },
         function() {
           console.log(this.state);
+          console.log(this.state.userData._id);
+          this.getChartData(this.state.userData._id);
         }
       );
     }
+
+
   }
   changePath(text) {
     console.log(text);
