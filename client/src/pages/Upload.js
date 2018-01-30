@@ -15,7 +15,7 @@ class Upload extends Component {
   }
 
   // Setup utility methods
-  fileInput = utils.fileInput;
+  choose_handler = utils.choose_handler;
   drop_handler = utils.drop_handler;
   dragover_handler = utils.dragover_handler;
   dragexit_handler = utils.dragexit_handler;
@@ -30,7 +30,7 @@ class Upload extends Component {
             { /* Drag and drop form */ }
             <form id="pgeCsvForm" className="drag__form" encType="multipart/form-data" method="post">
               { /* File input */ }
-              <input type="file" className="drag__file" onChange={ this.fileInput } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
+              <input type="file" className="drag__file" onChange={ this.choose_handler } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
                 name="pgeCsv" id="pgeCsv" />
               <label htmlFor="file"><strong>Choose a file</strong><span className="drag__choose"> or drag it here</span>.</label>
               { /* Hidden fields with username/id. */ }

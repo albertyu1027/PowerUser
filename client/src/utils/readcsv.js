@@ -1,6 +1,8 @@
+// import axios from "axios";
+
 let fileInput = (event) => {
-  var file = event.target.files[0];
-  var textType = /text.*/;
+  var file = event.target.files[0] || event.dataTransfer.items[0].getAsFile();
+  var textType = /text.csv/;
   var details = {
     name: file.name,
     type: file.type,
@@ -22,10 +24,14 @@ let fileInput = (event) => {
   }
 };
 
+let choose_handler = (event) => {
+  event.preventDefault();
+  fileInput(event);
+};
+
 let drop_handler = (event) => {
   event.preventDefault();
-  console.log(event.dataTransfer.items[0].kind);
-  console.log(event.dataTransfer.items[0].type);
+  fileInput(event);
 };
 
 let dragover_handler = (event) => {
@@ -42,7 +48,7 @@ let dragexit_handler = (event) => {
 };
 
 export {
-  fileInput,
+  choose_handler,
   drop_handler,
   dragover_handler,
   dragexit_handler
