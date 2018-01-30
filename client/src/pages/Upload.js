@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Container } from "../components/Grid";
 import Nav from "../components/Nav";
 import "../css/upload.css";
+import Alert from "../components/Upload/Alert";
+import Modal from "../components/Upload/Modal";
 class Upload extends Component {
   constructor() {
     super();
@@ -37,12 +39,12 @@ class Upload extends Component {
 
   drop_handler(event) {
     event.preventDefault();
-    console.log(event.type);
+    console.log(event.dataTransfer.items[0].kind);
+    console.log(event.dataTransfer.items[0].type);
   }
 
   dragover_handler(event) {
     event.preventDefault();
-    console.log(event.type);
     document.getElementById("pgeCsvForm").style.borderColor = "#00b8d8";
   }
 
@@ -56,26 +58,7 @@ class Upload extends Component {
     return (
       <Container>
         <div className="row" style={ { "paddingTop": "25px" } }>
-          <div className="col-sm-12">
-            <div className="alert alert-success alert-dismissible fade show" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-              CSV successfully uploaded!
-            </div>
-            <div className="alert alert-danger alert-dismissible fade show" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-              Error uploading CSV!
-            </div>
-            <div className="alert alert-info alert-dismissible fade show" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-              Uploading file!
-            </div>
-          </div>
+          <Alert/>
           <div className="col-sm-12">
             <form id="pgeCsvForm" className="box" action="http://localhost:3001/api/upload" encType="multipart/form-data" method="post">
               <input type="file" className="box__file" onChange={ this.fileInput } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
@@ -87,9 +70,15 @@ class Upload extends Component {
                 Upload
               </button>
             </form>
-            <p id="fileData" style={ { paddingTop: "25px", fontSize: "22px" } } />
-            <p id="fileContent" style={ { paddingTop: "25px", fontSize: "22px" } } />
           </div>
+          <div className="col-sm-12">
+              {/* <p id="fileData" style={ { paddingTop: "25px", fontSize: "22px" } } />
+              <p id="fileContent" style={ { paddingTop: "25px", fontSize: "22px" } } /> */}
+              <button type="button" className="btn btn-primary text-center" data-toggle="modal" data-target="#exampleModal">
+              <i className="fa fa-info" aria-hidden="true"></i>
+              </button>
+            </div>
+          <Modal />
         </div>
       </Container>
     )
