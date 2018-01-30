@@ -51,15 +51,18 @@ class Dashboard extends Component {
           'rgba(255,99,132,0.6)'
         ];
 
+        console.log(res.data)
+
         // loop throuh month data
         for (var i = 0; i < res.data.length; i++) {
           months.push(res.data[i].date);
         }
+        console.log(months)
           months.sort();
 
           // loop throuh sorted month data
           for (let i = 0; i < months.length; i++) {
-            sortedMonthNames.push(monthName[(months[i]-1)]);
+            sortedMonthNames.push(monthName[months[i]]);
           }
 
           console.log(sortedMonthNames);
