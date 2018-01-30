@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar} from "react-chartjs-2";
 import { Container } from "../components/Grid";
 import { Redirect, Link } from "react-router-dom";
 import Nav from "../components/Nav";
@@ -7,10 +7,12 @@ import Upload from "./Upload";
 import Chart from "./FrdChart";
 import API from "../utils/API";
 
-const firstUserData = [];
+
+const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
 const frdData1 = [0,0,0,0,0,0,0,0,0,0,0,0];
 const frdData2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 const frdData3 = [0,0,0,0,0,0,0,0,0,0,0,0];
+
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,7 +24,7 @@ class Dashboard extends Component {
     };
     this.changePath = this.changePath.bind(this);
   }
-  
+
     getChartData(userData){
     //Ajax call
     API.getUpload(userData)
@@ -49,15 +51,18 @@ class Dashboard extends Component {
           'rgba(255,99,132,0.6)'
         ];
 
+        console.log(res.data)
+
         // loop throuh month data
         for (var i = 0; i < res.data.length; i++) {
           months.push(res.data[i].date);
         }
+        console.log(months)
           months.sort();
 
           // loop throuh sorted month data
           for (let i = 0; i < months.length; i++) {
-            sortedMonthNames.push(monthName[(months[i]-1)]);
+            sortedMonthNames.push(monthName[months[i]]);
           }
 
           console.log(sortedMonthNames);
@@ -102,43 +107,13 @@ class Dashboard extends Component {
         });
 
       })
-      .catch(err => console.log(err));  
-    
+      .catch(err => console.log(err));
     }
 
-    //include this in dashboard
-    addFriend = event => {
-    var searchEmail = prompt("What is your friend's email address?");
-    console.log(searchEmail);
-    //newdata will be API call to upload model
-    if (searchEmail == 'albertyu1027@gmail.com') {
-      alert("hi");
-    }
-    };
-    
+
+
    componentDidMount() {
-    this.getChartData(1); 
 
-    var costData = []
-    //maybe use {}
-    API.getUploads()
-    .then(res => {
-
-    costData.data = [];
-      res.data.map(function(totalForMonth) {
-      costData.data[totalForMonth.date] = 
-      totalForMonth.cost;
-    });
-
-    console.log(costData.data)
-    
-    firstUserData.push(Object.values(costData.data))
-    console.log(firstUserData)
-
-    })
-
-    .catch(err => console.log(err));
-    
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
@@ -147,9 +122,13 @@ class Dashboard extends Component {
         },
         function() {
           console.log(this.state);
+          console.log(this.state.userData._id);
+          this.getChartData(this.state.userData._id);
         }
       );
     }
+
+
   }
   changePath(text) {
     console.log(text);
@@ -167,11 +146,14 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} 
-                initialData={firstUserData} 
-                addfriend1={frdData1}
-                addfriend2={frdData2}
-                addfriend3={frdData3}/>
+          <Chart user={this.state.userData}
+                chartData={this.state.chartData}
+                // initialData={data}
+                // addfriend1={frdData1}
+                // addfriend2={frdData2}
+                // addfriend3={frdData3}
+                />
+
         </div>
       );
     }
@@ -191,9 +173,9 @@ class Dashboard extends Component {
           <Container>
             <div className="chart">
         <Bar
-	         data={this.state.KwhChartData}
+           data={this.state.KwhChartData}
            style={{display: 'flex', justifyContent: 'center'}}
-	         options={{
+           options={{
              title:{
                display: true,
                text:'Engergy Consumption',
