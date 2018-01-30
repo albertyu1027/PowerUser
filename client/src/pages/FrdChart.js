@@ -42,10 +42,10 @@ class Chart extends Component{
         }
         else {
         alert("Sorry, "+ searchEmail + " is not your friend...yet");
+        return;
         }
 
         var newData = {
-          // id: this.state.chartData.length +1,
           label: res.data[0].username,
           backgroundColor: "rgba(255,99,132,0.6)",
           data: frdCostArr
@@ -55,41 +55,6 @@ class Chart extends Component{
         this.setState({datasets: this.state.chartData.datasets.push(newData)});
         
         console.log(this.state)
-        // this.setState({
-        //   chartData:{
-        //       labels: [   
-        //       "Jan",
-        //       "Feb",
-        //       "Mar",
-        //       "Apr",
-        //       "May",
-        //       "Jun",
-        //       "Jul",
-        //       "Aug",
-        //       "Sept",
-        //       "Oct",
-        //       "Nov",
-        //       "Dec"
-        //       ],
-        //       datasets: [
-        //       {
-        //         label: this.props.user.local.username,
-        //         backgroundColor: "#8e5ea2",
-        //         data: []
-        //       },
-        //       {
-        //         label: "",
-        //         backgroundColor: "#8e5ea2",
-        //         data: this.props.FrdData1
-        //       },
-        //       {
-        //         label: "",
-        //         backgroundColor: "#8e5ea2",
-        //         data: []
-        //       }]
-        //   }
-        // });
-
 
     })
 
@@ -131,7 +96,6 @@ componentDidMount(){
               ],
               datasets: [
               {
-                // id: 1,
                 label: this.props.user.local.username,
                 backgroundColor: "#8e5ea2",
                 data: costArr
@@ -173,7 +137,7 @@ componentDidMount(){
           type="button"
           className="btn btn-outline-success"
           onClick={this.addFriend}>
-          Add A Friend!
+          Compare with a Friend!
         </button>
         </div>
         <br />
