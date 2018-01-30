@@ -5,6 +5,8 @@ import { Container } from "../components/Grid";
 import Nav from "../components/Nav";
 import API from "../utils/API";
 
+var userCost = []
+var frdCost = []
 
 class Chart extends Component{
   constructor(props) {
@@ -35,7 +37,9 @@ class Chart extends Component{
         return a + b;
         }
 
-        console.log(sum)
+        frdCost.push(sum)
+
+        console.log(frdCost)
         
         if (searchEmail == res.data[0].username) {
         alert("hi");
@@ -63,10 +67,13 @@ class Chart extends Component{
     };
 
 
+
+
 componentDidMount(){
 
   console.log(this.state)
   console.log(this.props)
+
 
   API.getUploads()
   .then(res => {
@@ -77,6 +84,16 @@ componentDidMount(){
           costArr.push(res.data[i].cost)
         }
         console.log(costArr)
+
+        var sum = costArr.reduce(add, 0);
+
+        function add(a, b) {
+        return a + b;
+        }
+
+        userCost.push(sum)
+
+        console.log(userCost)
 
         this.setState({
           chartData:{
