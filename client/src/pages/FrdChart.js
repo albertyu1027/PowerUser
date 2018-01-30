@@ -42,12 +42,6 @@ class Chart extends Component{
         console.log(frdCost)
         
         if (searchEmail == res.data[0].username) {
-        alert("hi");
-        }
-        else {
-        alert("Sorry, "+ searchEmail + " is not your friend...yet");
-        return;
-        }
 
         var newData = {
           label: res.data[0].username,
@@ -60,13 +54,18 @@ class Chart extends Component{
         
         console.log(this.state)
 
+        }
+
+        else {
+        alert("Sorry, "+ searchEmail + " is not your friend...yet");
+        return;
+        }
+
     })
 
     .catch(err => console.log(err));
 
     };
-
-
 
 
 componentDidMount(){
