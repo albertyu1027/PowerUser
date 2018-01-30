@@ -65,3 +65,14 @@ div#info-toggle button {
   font-size:20px;
   border-radius: 100%;
 }
+
+.file__correct {
+ border-color:"#00b8d8";
+ background-color: hotpink;
+ color: white;
+}
+
+.file__incorrect {
+ border-color:"#00b8d8";
+ background-color: hotpink
+}

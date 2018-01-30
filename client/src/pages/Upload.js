@@ -7,6 +7,7 @@ import Nav from "../components/Nav";
 import "../css/upload.css";
 import Alert from "../components/Upload/Alert";
 import Modal from "../components/Upload/Modal";
+ // Import utility methods
 import * as utils from "../utils/readcsv";
 
 class Upload extends Component {
@@ -14,7 +15,7 @@ class Upload extends Component {
     super();
   }
 
-  // Setup utility methods
+  // Initialize utility methods
   choose_handler = utils.choose_handler;
   drop_handler = utils.drop_handler;
   dragover_handler = utils.dragover_handler;

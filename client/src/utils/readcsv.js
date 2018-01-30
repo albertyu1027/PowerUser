@@ -36,16 +36,15 @@ let drop_handler = (event) => {
 
 let dragover_handler = (event) => {
   event.preventDefault();
-  console.log(event.dataTransfer.items[0].type)
-  document.getElementById("pgeCsvForm").style.borderColor = "#00b8d8";
-  document.getElementById("pgeCsvForm").style.backgroundColor = "#17c671";
+  var form = document.getElementById("pgeCsvForm");
+  console.log(event.dataTransfer.items[0].type);
+  form.classList.add("file__correct");
 };
 
 let dragexit_handler = (event) => {
   event.preventDefault();
-  console.log(event.type);
-  document.getElementById("pgeCsvForm").style.borderColor = "#e9ecef";
-  document.getElementById("pgeCsvForm").style.backgroundColor = "#ffffff";
+  var form = document.getElementById("pgeCsvForm");
+  form.classList.remove("file__correct");
 };
 
 export {
