@@ -14,7 +14,7 @@ input#userid
   display: none;
 }
 
-form.drag__form {
+.drag__form {
   border: 3px dashed #e9ecef;
   border-radius: 15px;
   height: 70vh;
@@ -67,12 +67,13 @@ div#info-toggle button {
 }
 
 .file__correct {
- border-color:"#00b8d8";
- background-color: hotpink;
+ border:3px dashed #129455 !important;
+ background-color: #17c671;
  color: white;
 }
 
 .file__incorrect {
- border-color:"#00b8d8";
- background-color: hotpink
+ border: 3px dashed #8f122d !important;
+ background-color: #c4183c;
+ color: white;
 }
