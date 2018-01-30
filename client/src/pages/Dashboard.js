@@ -113,9 +113,8 @@ class Dashboard extends Component {
     //newdata will be API call to upload model
     if (searchEmail == 'albertyu1027@gmail.com') {
       alert("hi");
-      
     }
-  };
+    };
     
    componentDidMount() {
     this.getChartData(1); 
@@ -124,24 +123,21 @@ class Dashboard extends Component {
     //maybe use {}
     API.getUploads()
     .then(res => {
-    // for (var i=0; i<res.data.length; i++){
-    // costData.push(res.data[i].cost)
-    // console.log(costData)
+
     costData.data = [];
-    res.data.map(function(totalForMonth) {
+      res.data.map(function(totalForMonth) {
       costData.data[totalForMonth.date] = 
       totalForMonth.cost;
     });
 
     console.log(costData.data)
+    
     firstUserData.push(Object.values(costData.data))
     console.log(firstUserData)
-    
+
     })
 
     .catch(err => console.log(err));
-
-    
     
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
