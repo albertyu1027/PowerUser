@@ -36,6 +36,7 @@ let drop_handler = (event) => {
 
 let dragover_handler = (event) => {
   event.preventDefault();
+  console.log(event.dataTransfer.items[0].type)
   document.getElementById("pgeCsvForm").style.borderColor = "#00b8d8";
   document.getElementById("pgeCsvForm").style.backgroundColor = "#17c671";
 };
