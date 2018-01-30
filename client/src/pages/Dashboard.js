@@ -7,12 +7,10 @@ import Upload from "./Upload";
 import Chart from "./FrdChart";
 import API from "../utils/API";
 
-
-const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
+const firstUserData = [];
 const frdData1 = [0,0,0,0,0,0,0,0,0,0,0,0];
 const frdData2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 const frdData3 = [0,0,0,0,0,0,0,0,0,0,0,0];
-
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,9 +22,6 @@ class Dashboard extends Component {
     };
     this.changePath = this.changePath.bind(this);
   }
-
-
-
   
     getChartData(userData){
     //Ajax call
@@ -110,20 +105,41 @@ class Dashboard extends Component {
       .catch(err => console.log(err));  
     
     }
+
+    //include this in dashboard
+    addFriend = event => {
+    var searchEmail = prompt("What is your friend's email address?");
+    console.log(searchEmail);
+    //newdata will be API call to upload model
+    if (searchEmail == 'albertyu1027@gmail.com') {
+      alert("hi");
+      
+    }
+  };
     
    componentDidMount() {
     this.getChartData(1); 
-  var costData = []
-  API.getUploads()
-  .then(res => {
-    for (var i=0; i<res.data.length; i++){
-    costData.push(res.data[i].cost)
-    console.log(costData)
-    }
 
-  })
+    var costData = []
+    //maybe use {}
+    API.getUploads()
+    .then(res => {
+    // for (var i=0; i<res.data.length; i++){
+    // costData.push(res.data[i].cost)
+    // console.log(costData)
+    costData.data = [];
+    res.data.map(function(totalForMonth) {
+      costData.data[totalForMonth.date] = 
+      totalForMonth.cost;
+    });
 
-  .catch(err => console.log(err));
+    console.log(costData.data)
+    firstUserData.push(Object.values(costData.data))
+    console.log(firstUserData)
+    
+    })
+
+    .catch(err => console.log(err));
 
     
     
@@ -156,7 +172,7 @@ class Dashboard extends Component {
         <div>
           <Nav changePath={this.changePath} />
           <Chart user={this.state.userData} 
-                initialData={data} 
+                initialData={firstUserData} 
                 addfriend1={frdData1}
                 addfriend2={frdData2}
                 addfriend3={frdData3}/>

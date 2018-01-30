@@ -52,12 +52,7 @@ class Chart extends Component {
 
   //need to add a function to refresh the chart.
 
-//include this in dashboard
-  addFriend = event => {
-    var searchEmail = prompt("What is your friend's email address?");
-    console.log(searchEmail);
-    //newdata will be API call to upload model
-  };
+
 
   componentDidMount() {
     //User data is this.props.user
@@ -72,7 +67,7 @@ class Chart extends Component {
           <div className="chart">
             <h1 style={{ display: "flex", justifyContent: "center" }}>
               {" "}
-              Compete With Your Friends!{" "}
+              Spend Less than Your Friends!{" "}
             </h1>
             <Bar data={this.state.chartData} options={{}} />
 
