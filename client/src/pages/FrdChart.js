@@ -17,17 +17,25 @@ class Chart extends Component{
     addFriend = event => {
     var searchEmail = prompt("What is your friend's email address?");
     console.log(searchEmail);
- 
+
     //AJAX call
     API.getUploads()
     .then(res => {
         console.log(res.data)
-        var costArr = []
+        let frdCostArr = []
 
         for (var i =0; i<res.data.length; i++) {
-        costArr.push(res.data[i].cost)
+        frdCostArr.push(res.data[i].cost)
         }
-        console.log(costArr)
+        console.log(frdCostArr)
+
+        var sum = frdCostArr.reduce(add, 0);
+
+        function add(a, b) {
+        return a + b;
+        }
+
+        console.log(sum)
         
         if (searchEmail == res.data[0].username) {
         alert("hi");
@@ -36,13 +44,17 @@ class Chart extends Component{
         alert("Sorry, "+ searchEmail + " is not your friend...yet");
         }
 
+        var newData = {
+          // id: this.state.chartData.length +1,
+          label: res.data[0].username,
+          backgroundColor: "rgba(255,99,132,0.6)",
+          data: frdCostArr
+        }
+        console.log(newData)
 
-
-//         this.setState(({access}) => ({access: {
-//   ...access,
-//   hospital_id: 1,
-// }});
-
+        this.setState({datasets: this.state.chartData.datasets.push(newData)});
+        
+        console.log(this.state)
         // this.setState({
         //   chartData:{
         //       labels: [   
@@ -63,12 +75,12 @@ class Chart extends Component{
         //       {
         //         label: this.props.user.local.username,
         //         backgroundColor: "#8e5ea2",
-        //         data: costArr
+        //         data: []
         //       },
         //       {
         //         label: "",
         //         backgroundColor: "#8e5ea2",
-        //         data: this.props.FrdData
+        //         data: this.props.FrdData1
         //       },
         //       {
         //         label: "",
@@ -119,6 +131,7 @@ componentDidMount(){
               ],
               datasets: [
               {
+                // id: 1,
                 label: this.props.user.local.username,
                 backgroundColor: "#8e5ea2",
                 data: costArr

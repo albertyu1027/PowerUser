@@ -9,7 +9,7 @@ import API from "../utils/API";
 
 
 const data = [133,411,411,411,411,411,300,400,411, 411,411,411];
-const frdData1 = [0,0,0,0,0,0,0,0,0,0,0,0];
+const frdData1 = [133,411,411,411,411,411,300,400,411, 411,411,411];
 const frdData2 = [0,0,0,0,0,0,0,0,0,0,0,0];
 const frdData3 = [0,0,0,0,0,0,0,0,0,0,0,0];
 
@@ -128,7 +128,6 @@ class Dashboard extends Component {
       );
     }
 
-
   }
   changePath(text) {
     console.log(text);
@@ -147,9 +146,9 @@ class Dashboard extends Component {
         <div>
           <Nav changePath={this.changePath} />
           <Chart user={this.state.userData}
-                chartData={this.state.chartData}
+                FrdData={this.state.chartData}
                 // initialData={data}
-                // addfriend1={frdData1}
+                addfriend1={frdData1}
                 // addfriend2={frdData2}
                 // addfriend3={frdData3}
                 />
