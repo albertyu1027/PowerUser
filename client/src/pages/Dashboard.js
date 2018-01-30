@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar} from "react-chartjs-2";
 import { Container } from "../components/Grid";
 import { Redirect, Link } from "react-router-dom";
 import Nav from "../components/Nav";
@@ -104,27 +104,16 @@ class Dashboard extends Component {
         });
 
       })
-      .catch(err => console.log(err));  
+      .catch(err => console.log(err));
     }
-    
 
-    
+
+
    componentDidMount() {
-    this.getChartData(1); 
-  var costData = []
-  API.getUploads()
-  .then(res => {
-    for (var i=0; i<res.data.length; i++){
-    costData.push(res.data[i].cost)
-    console.log(costData)
-    }
+    this.getChartData("5a6fee5c8cea42a76ce8089f");
 
-  })
 
-  .catch(err => console.log(err));
 
-    
-    
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
@@ -153,8 +142,8 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} 
-                initialData={data} 
+          <Chart user={this.state.userData}
+                initialData={data}
                 addfriend1={frdData1}
                 addfriend2={frdData2}
                 addfriend3={frdData3}/>
