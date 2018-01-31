@@ -225,8 +225,7 @@ class SignupForm extends Component {
               className="btn btn-outline-primary"
               onClick={this.handleSubmit}
               disabled={
-                !(
-                  this.state.username &&
+                !(this.state.username &&
                   this.state.password &&
                   this.state.confirmPassword &&
                   this.state.city &&
@@ -234,8 +233,9 @@ class SignupForm extends Component {
                   this.checkPassword(
                     this.state.password,
                     this.state.confirmPassword
-                  )
-                )
+                  ) &&
+                  this.emailCheck(this.state.username),
+                  this.lengthCheck(this.state.password))
               }
             >
               Sign up
