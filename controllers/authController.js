@@ -10,7 +10,7 @@ module.exports = {
   createNewUser: function(req, res) {
     console.log(req.body);
     const { city, stateLocation, username, password, firstName } = req.body;
-    console.log(username);
+    console.log(firstName);
 
     // ADD VALIDATION
     User.findOne({ "local.username": username }, (err, userMatch) => {
