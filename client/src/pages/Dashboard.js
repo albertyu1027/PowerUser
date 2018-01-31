@@ -92,13 +92,19 @@ class Dashboard extends Component {
         this.setState({
           KwhChartData:{
             labels: sortedMonthNames,
-            datasets: datasets
+            datasets:[
+              {
+                label:'Total kwh',
+                data:kwh,
+                backgroundColor:backgroundColor
+              }
+            ]
           },
           CostChartData:{
             labels: sortedMonthNames,
             datasets:[
               {
-                label:'population',
+                label:'Total Bill',
                 data:bills,
                 backgroundColor:backgroundColor
               }
@@ -175,8 +181,18 @@ class Dashboard extends Component {
 	         options={{
              title:{
                display: true,
-               text:'Engergy Consumption',
+               text:'Monthly Engergy Consumption',
                fontSize: 25
+             },
+             scales: {
+               xAxes: [{
+                 gridLines: {
+                   offsetGridLines: true
+                 }
+               }]
+             },
+             legend: {
+               display: false
              }
            }}
         />
@@ -185,8 +201,11 @@ class Dashboard extends Component {
            options={{
              title:{
                display: true,
-               text:'Cost',
+               text:'Monthly Bill',
                fontSize: 25
+             },
+             legend: {
+               display: false
              }
            }}
         />
