@@ -43,7 +43,7 @@ class Chart extends Component{
 
         console.log(frdCost)
         
-        if (searchEmail == 'jeffreylowly@gmail.com') {
+        if (searchEmail == 'jeffreylowy@gmail.com') {
 
         var newData = {
           label: res.data[13].username,
