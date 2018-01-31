@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 
 let fileInput = (event) => {
   var file = event.target.files[0] || event.dataTransfer.items[0].getAsFile();
@@ -7,12 +7,35 @@ let fileInput = (event) => {
   displayFileData(file);
 
   if (file.type.match(textType)) {
+
+    // Read the contents of the file
     // var reader = new FileReader();
     // reader.onload = function () {
     // document.getElementById("fileContent").innerText = reader.result;
     // };
     // // reader.readAsText(file);
-    console.log(document.getElementById("pgeCsvForm"));
+
+    // Create formData object to send to server
+    var data = new FormData();
+    // Append the username and id to the data object
+    data.append("username", document.getElementById("username").value);
+    data.append("userid",document.getElementById("userid").value);
+    // Append the file to the data object
+    data.append('pgeCsv', file, file.name);
+
+    // Send file and form data to the server
+    axios.post("http://localhost:3001/api/upload", data, axiois_config)
+    .then(function (res) {
+      console.log(res);
+      // output.className = 'container';
+      // output.innerHTML = res.data;
+    })
+    .catch(function (err) {
+      console.log(err);
+      // output.className = 'container text-danger';
+      // output.innerHTML = err.message;
+    });
+
   } else {
     var danger = document.getElementById("alert_danger");
     danger.innerText = "Unsupported file type! File must be a csv!";
@@ -60,6 +83,13 @@ function displayFileData(file) {
   <div><strong>File type:</strong> ${file.type}\n
   <div><strong>File size:</strong> ${file.size}\n`;
 }
+
+const axiois_config = {
+  onUploadProgress: function(progressEvent) {
+    var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+    console.log(percentCompleted);
+  }
+};
 
 export {
   choose_handler,

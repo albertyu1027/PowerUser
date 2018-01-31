@@ -29,7 +29,7 @@ class Upload extends Component {
           <Alert/>
           <div className="col-sm-12">
             { /* Drag and drop form */ }
-            <form id="pgeCsvForm" className="drag__form" encType="multipart/form-data" method="post">
+            <form id="pgeCsvForm" action="/api/upload" className="drag__form" encType="multipart/form-data" method="post">
               { /* File input */ }
               <input type="file" className="drag__file" onChange={ this.choose_handler } onDrop={ this.drop_handler } onDragOver={ this.dragover_handler } onDragLeave={ this.dragexit_handler }
                 name="pgeCsv" id="pgeCsv" />
