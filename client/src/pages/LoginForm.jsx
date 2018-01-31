@@ -116,6 +116,7 @@ class LoginForm extends Component {
                   type="button"
                   className="btn btn-outline-success"
                   onClick={this.handleSubmit}
+                  disabled={!(this.state.username && this.state.password)}
                 >
                   Login
                 </button>
