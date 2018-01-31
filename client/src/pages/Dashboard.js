@@ -193,7 +193,12 @@ class Dashboard extends Component {
                    display: true,
                    labelString: 'kWh',
                    fontSize: 15
-                 }
+                 },
+                 ticks: {
+                   min: 200,
+                   max: 700,
+                   stepSize: 50
+                }
                }]
              }
            }}
@@ -215,7 +220,12 @@ class Dashboard extends Component {
                    display: true,
                    labelString: 'Dollars',
                    fontSize: 15
-                 }
+                 },
+                   ticks: {
+                     min: 50,
+                     max: 150,
+                     stepSize: 10
+                  }
                }]
              }
            }}
