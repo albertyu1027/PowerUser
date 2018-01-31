@@ -24,7 +24,7 @@ let fileInput = (event) => {
     data.append('pgeCsv', file, file.name);
 
     // Send file and form data to the server
-    axios.post("http://localhost:3001/api/upload", data, axiois_config)
+    axios.post("/api/upload", data, axiois_config)
     .then(function (res) {
       console.log(res);
       // output.className = 'container';
