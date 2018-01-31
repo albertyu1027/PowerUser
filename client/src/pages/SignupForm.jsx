@@ -18,6 +18,7 @@ class SignupForm extends Component {
   constructor() {
     super();
     this.state = {
+      firstName: "",
       username: "",
       password: "",
       confirmPassword: "",
@@ -46,8 +47,13 @@ class SignupForm extends Component {
       return true;
     }
   }
+  lengthCheck(password) {
+    if (password.length > 5) {
+      return true;
+    }
+  }
 
-  passwordCheck(pass1, pass2) {
+  checkPassword(pass1, pass2) {
     if (pass1 === pass2 && pass2) {
       return true;
     }
@@ -59,7 +65,8 @@ class SignupForm extends Component {
       username: this.state.username,
       password: this.state.password,
       city: this.state.city,
-      stateLocation: this.state.stateLocation
+      stateLocation: this.state.stateLocation,
+      firstName: this.state.firstName
     }).then(response => {
       console.log(response);
       if (!response.data.errmsg) {
@@ -96,7 +103,7 @@ class SignupForm extends Component {
 
             <div className="input-group with-addon-icon-left">
               <span className="input-group-addon">
-                <i className="fa fa-user" />
+                <i className="fa fa-address-card" />
               </span>
               <input
                 type="email"
@@ -108,6 +115,26 @@ class SignupForm extends Component {
                 }
                 placeholder="Enter Your Email"
                 value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <div className="valid-feedback">
+                The Force Is Strong With This One...
+              </div>
+              <div className="invalid-feedback">
+                Your Powers Are Weak Old Man!
+              </div>
+            </div>
+
+            <div className="input-group with-addon-icon-left">
+              <span className="input-group-addon">
+                <i className="fa fa-user" />
+              </span>
+              <input
+                type="text"
+                name="firstName"
+                className="form-control"
+                placeholder="Enter Your First Name"
+                value={this.state.firstName}
                 onChange={this.handleChange}
               />
               <div className="valid-feedback">
@@ -154,7 +181,7 @@ class SignupForm extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
                 className={
-                  this.emailCheck(this.state.password)
+                  this.lengthCheck(this.state.password)
                     ? "form-control is-valid"
                     : "form-control is-invalid"
                 }
@@ -176,7 +203,7 @@ class SignupForm extends Component {
                 value={this.state.confirmPassword}
                 onChange={this.handleChange}
                 className={
-                  this.passwordCheck(
+                  this.checkPassword(
                     this.state.password,
                     this.state.confirmPassword
                   )
@@ -204,12 +231,10 @@ class SignupForm extends Component {
                   this.state.confirmPassword &&
                   this.state.city &&
                   this.state.stateLocation &&
-                  this.passwordCheck &&
-                  this.passwordCheck(
+                  this.checkPassword(
                     this.state.password,
                     this.state.confirmPassword
-                  ) &&
-                  this.emailCheck(this.state.password)
+                  )
                 )
               }
             >
