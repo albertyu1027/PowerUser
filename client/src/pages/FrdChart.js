@@ -24,11 +24,13 @@ class Chart extends Component{
     API.getUploads()
     .then(res => {
         console.log(res.data)
+
         let frdCostArr = []
 
-        for (var i =0; i<res.data.length; i++) {
+        for (var i =12; i<24; i++) {
         frdCostArr.push(res.data[i].cost)
         }
+
         console.log(frdCostArr)
 
         var sum = frdCostArr.reduce(add, 0);
@@ -41,19 +43,18 @@ class Chart extends Component{
 
         console.log(frdCost)
         
-        if (searchEmail == res.data[0].username) {
+        if (searchEmail == 'jeffreylowly@gmail.com') {
 
         var newData = {
-          label: res.data[0].username,
+          label: res.data[13].username,
           backgroundColor: "rgba(255,99,132,0.6)",
           data: frdCostArr
         }
-        console.log(newData)
+        // console.log(newData)
 
         this.setState({datasets: this.state.chartData.datasets.push(newData)});
         
-        console.log(this.state)
-
+        // console.log(this.state)
         }
 
         else {
@@ -119,8 +120,6 @@ componentDidMount(){
               ]
           }
         });
-
-
     })
 
     .catch(err => console.log(err));
@@ -166,7 +165,6 @@ componentDidMount(){
               <ul>Third Place 😅 - </ul>
               <ul />
             </div>
-
       </div>
       )
   }
