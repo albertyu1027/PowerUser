@@ -40,9 +40,9 @@ class SignupForm extends Component {
   //   else if (length > 0) return "error";
   // }
 
-  lengthCheck(string) {
+  emailCheck(emailInput) {
     // console.log(string.length);
-    if (string.length > 5) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)) {
       return true;
     }
   }
@@ -102,7 +102,7 @@ class SignupForm extends Component {
                 type="email"
                 name="username"
                 className={
-                  this.lengthCheck(this.state.username)
+                  this.emailCheck(this.state.username)
                     ? "form-control is-valid"
                     : "form-control is-invalid"
                 }
@@ -154,7 +154,7 @@ class SignupForm extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
                 className={
-                  this.lengthCheck(this.state.password)
+                  this.emailCheck(this.state.password)
                     ? "form-control is-valid"
                     : "form-control is-invalid"
                 }
@@ -209,7 +209,7 @@ class SignupForm extends Component {
                     this.state.password,
                     this.state.confirmPassword
                   ) &&
-                  this.lengthCheck(this.state.password)
+                  this.emailCheck(this.state.password)
                 )
               }
             >
