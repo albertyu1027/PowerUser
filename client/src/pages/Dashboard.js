@@ -184,15 +184,17 @@ class Dashboard extends Component {
                text:'Monthly Engergy Consumption',
                fontSize: 25
              },
-             scales: {
-               xAxes: [{
-                 gridLines: {
-                   offsetGridLines: true
-                 }
-               }]
-             },
              legend: {
                display: false
+             },
+             scales: {
+               yAxes: [{
+                 scaleLabel: {
+                   display: true,
+                   labelString: 'kWh',
+                   fontSize: 15
+                 }
+               }]
              }
            }}
         />
@@ -206,6 +208,15 @@ class Dashboard extends Component {
              },
              legend: {
                display: false
+             },
+             scales: {
+               yAxes: [{
+                 scaleLabel: {
+                   display: true,
+                   labelString: 'Dollars',
+                   fontSize: 15
+                 }
+               }]
              }
            }}
         />
