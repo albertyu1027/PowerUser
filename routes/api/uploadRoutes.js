@@ -9,7 +9,10 @@ router.route("/")
 // Matches with "/api/books/:id"
 router
   .route("/:UserID")
-  .get(uploadController.findById)
-  .put(uploadController.update)
-  .delete(uploadController.remove);
+  .get(uploadController.findById);
+
+  router
+  .route("/email/:username")
+  .get(uploadController.findByUsername);
+
 module.exports = router;

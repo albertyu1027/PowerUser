@@ -5,99 +5,75 @@ import { Container } from "../components/Grid";
 import Nav from "../components/Nav";
 import API from "../utils/API";
 
-var userCost = []
-var frdCost = []
+var shards_clr = {
+  blue: "#007bff",
+  red: "#c4183c",
+  green: "#17c671",
+  teal: "#00b8d8"
+};
 
-class Chart extends Component{
+class Chart extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-      chartData:{},
-    };  
+    this.state = {
+      chartData: {},
+      displayTitle: true,
+      displayLegend: true,
+      legendPosition: 'bottom'
+    };
   }
 
-    addFriend = event => {
+  addFriend = () => {
     var searchEmail = prompt("What is your friend's email address?");
-    console.log(searchEmail);
 
+    if (!searchEmail) {
+      alert("Please enter a valid email");
+      return;
+    }
     //AJAX call
-    API.getUploads()
-    .then(res => {
-        console.log(res.data)
+    API.getUsername(searchEmail)
+      .then(res => {
 
-        let frdCostArr = []
+        var frdCostArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var friend_data = res.data;
 
-        for (var i =12; i<24; i++) {
-        frdCostArr.push(res.data[i].cost)
-        }
-
-        console.log(frdCostArr)
-
-        var sum = frdCostArr.reduce(add, 0);
-
-        function add(a, b) {
-        return a + b;
-        }
-
-        frdCost.push(sum)
-
-        console.log(frdCost)
-        
-        if (searchEmail == 'jeffreylowy@gmail.com') {
-
-        var newData = {
-          label: res.data[13].username,
+        var new_friend_data = {
+          label: null,
           backgroundColor: "rgba(255,99,132,0.6)",
-          data: frdCostArr
-        }
-        // console.log(newData)
+          data: null
+        };
 
-        this.setState({datasets: this.state.chartData.datasets.push(newData)});
-        
-        // console.log(this.state)
-        }
+        friend_data.map((month) => {
+          new_friend_data.label = month.username;
+          frdCostArr[month.date] = month.cost;
+        });
 
-        else {
-        alert("Sorry, "+ searchEmail + " is not your friend...yet");
-        return;
-        }
-
-    })
-
-    .catch(err => console.log(err));
-
-    };
-
-
-componentDidMount(){
-
-  console.log(this.state)
-  console.log(this.props)
-
-
-  API.getUploads()
-  .then(res => {
-        console.log(res.data)
-        var costArr = []
-
-        for (var i =0; i<res.data.length; i++) {
-          costArr.push(res.data[i].cost)
-        }
-        console.log(costArr)
-
-        var sum = costArr.reduce(add, 0);
-
-        function add(a, b) {
-        return a + b;
-        }
-
-        userCost.push(sum)
-
-        console.log(userCost)
+        new_friend_data.data = frdCostArr;
 
         this.setState({
-          chartData:{
-              labels: [   
+          datasets: this.state.chartData.datasets.push(new_friend_data)
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  componentDidMount() {
+
+    API.getUpload(this.props.user._id)
+      .then(res => {
+
+        var costArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var user_data = res.data;
+
+        user_data.map((month) => {
+          costArr[month.date] = month.cost;
+        });
+
+        this.setState({
+          chartData: {
+            labels: [
               "Jan",
               "Feb",
               "Mar",
@@ -110,63 +86,72 @@ componentDidMount(){
               "Oct",
               "Nov",
               "Dec"
-              ],
-              datasets: [
+            ],
+            datasets: [
               {
                 label: this.props.user.local.username,
-                backgroundColor: "#8e5ea2",
+                backgroundColor: shards_clr.blue,
                 data: costArr
               }
-              ]
+            ]
           }
         });
-    })
-
-    .catch(err => console.log(err));
-  }
-
-  static defaultProps = {
-    displayTitle: true,
-    displayLegend: true,
-    legendPosition: 'bottom'
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
-    return(
-      <div className = "chart">
-        <Bar 
-        data={this.state.chartData} 
-        options={{
-          title:{
-            display: this.props.displayTitle,
-            text: 'Spend Less Than Your Friends',
-            fontSize: 30
-          },
-          legend: {
-            display: this.props.displayLegend,
-            position: this.props.legendPosition
-          }
-        }} />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-        <button
-          type="button"
-          className="btn btn-outline-success"
-          onClick={this.addFriend}>
-          Compare with a Friend!
-        </button>
-        </div>
-        <br />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-
-              <h2> Leaderboard </h2>
-              <ul>First Place 😎 - You Spent____ this year</ul>
-              <ul>
-                Second Place 😇 - </ul>
-              <ul>Third Place 😅 - </ul>
-              <ul />
+    return (
+      <Container>
+        <div className="row">
+          <div className="col-md-8">
+            <div className="chart">
+              <Bar data={ this.state.chartData } options={ { title: { display: true, text: 'Spend Less Than Your Friends', fontSize: 30 }, legend: { display: this.props.displayLegend, position: this.props.legendPosition } } } />
+              <div style={ { display: "flex", justifyContent: "center" } }>
+                <button type="button" className="btn btn-outline-success" onClick={ this.addFriend }>
+                  Compare with a Friend!
+                </button>
+              </div>
+              <br />
             </div>
-      </div>
-      )
+          </div>
+          <div className="col-md-4">
+            <h2>LEADERBOARD</h2>
+            <table className="table">
+              <thead className="thead-dark">
+                <tr>
+                  <th scope="col">Place</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Energy Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>Albert</td>
+                  <td>$1000</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>Kaylynn</td>
+                  <td>$2000</td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td>Adham</td>
+                  <td>$3000</td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>Jeff</td>
+                  <td>$4000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </Container>
+    )
   }
 }
 

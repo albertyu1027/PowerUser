@@ -1,27 +1,20 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all uploads
   getUploads: function() {
     return axios.get("/api/uploads");
   },
-  // Gets the book with the given id
+  // Gets the upload data with the given id
   getUpload: function(id) {
     return axios.get("/api/uploads/" + id);
   },
-  // Deletes the book with the given id
-  deleteUpload: function(id) {
-    return axios.delete("/api/uploads/" + id);
+  getUsername: function(address) {
+    return axios.get("/api/uploads/email/" + address);
   },
-  // Saves a book to the database
-  saveUpload: function(uploadData) {
-    return axios.post("/api/uploads", uploadData);
-  },
-
   signUpNewUser: function(userData) {
     return axios.post("/auth/signup", userData);
   },
-
   loginUser: function(loginCredentials) {
     return axios.post("/auth/login", loginCredentials);
   }
