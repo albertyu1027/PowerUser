@@ -42,7 +42,8 @@ class Chart extends Component{
         frdCost.push(sum)
 
         console.log(frdCost)
-        
+
+
         if (searchEmail == 'jeffreylowy@gmail.com') {
 
         var newData = {
@@ -55,6 +56,7 @@ class Chart extends Component{
         this.setState({datasets: this.state.chartData.datasets.push(newData)});
         
         // console.log(this.state)
+        return;
         }
 
         else {
@@ -148,6 +150,7 @@ componentDidMount(){
           }
         }} />
         <div style={{ display: "flex", justifyContent: "center" }}>
+       <br />
         <button
           type="button"
           className="btn btn-outline-success"
@@ -155,16 +158,8 @@ componentDidMount(){
           Compare with a Friend!
         </button>
         </div>
-        <br />
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        
 
-              <h2> Leaderboard </h2>
-              <ul>First Place 😎 - You Spent____ this year</ul>
-              <ul>
-                Second Place 😇 - </ul>
-              <ul>Third Place 😅 - </ul>
-              <ul />
-            </div>
       </div>
       )
   }
