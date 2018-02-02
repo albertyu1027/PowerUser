@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar} from "react-chartjs-2";
 import { Container } from "../components/Grid";
 import { Redirect, Link } from "react-router-dom";
 import Nav from "../components/Nav";
@@ -37,29 +37,33 @@ class Dashboard extends Component {
         let bills = [];
         let kwh = [];
         let backgroundColor = [
-          'rgba(255,99,132,0.6)',
-          'rgba(255, 0, 0, 0.3)',
-          'rgba(0, 255, 0, 0.3)',
-          'rgba(0, 0, 255, 0.3)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)'
+          'rgba(0,0,128,.8)',
+          'rgba(0,0,255,.8)',
+          'rgba(0,128,0,.8)',
+          'rgba(0,255,255,.8)',
+          'rgba(128,0,0,.8)',
+          'rgba(128,0,128,.8)',
+          'rgba(0,0,128,.8)',
+          'rgba(255,0,0,.6)',
+          'rgba(255,0,255,.8)',
+          'rgba(255,255,0,.8)',
+          'rgba(255,99,132,0.8)',
+          'rgba(0,128,128,0.8)'
         ];
+
+        console.log(res.data)
 
         // loop throuh month data
         for (var i = 0; i < res.data.length; i++) {
           months.push(res.data[i].date);
         }
-          months.sort();
+        console.log(months)
+          months.sort(function(a, b){return a-b});
+          console.log(months)
 
           // loop throuh sorted month data
           for (let i = 0; i < months.length; i++) {
-            sortedMonthNames.push(monthName[(months[i]-1)]);
+            sortedMonthNames.push(monthName[months[i]]);
           }
 
           console.log(sortedMonthNames);
@@ -89,13 +93,19 @@ class Dashboard extends Component {
         this.setState({
           KwhChartData:{
             labels: sortedMonthNames,
-            datasets: datasets
+            datasets:[
+              {
+                label:'Total kwh',
+                data:kwh,
+                backgroundColor:backgroundColor
+              }
+            ]
           },
           CostChartData:{
             labels: sortedMonthNames,
             datasets:[
               {
-                label:'population',
+                label:'Total Bill',
                 data:bills,
                 backgroundColor:backgroundColor
               }
@@ -104,27 +114,13 @@ class Dashboard extends Component {
         });
 
       })
-      .catch(err => console.log(err));  
+      .catch(err => console.log(err));
     }
-    
 
-    
+
+
    componentDidMount() {
-    this.getChartData(1); 
-  var costData = []
-  API.getUploads()
-  .then(res => {
-    for (var i=0; i<res.data.length; i++){
-    costData.push(res.data[i].cost)
-    console.log(costData)
-    }
 
-  })
-
-  .catch(err => console.log(err));
-
-    
-    
     //If there is user data assign it to this.state.userData
     if (this.props.location.state) {
       this.setState(
@@ -133,9 +129,13 @@ class Dashboard extends Component {
         },
         function() {
           console.log(this.state);
+          console.log(this.state.userData._id);
+          this.getChartData(this.state.userData._id);
         }
       );
     }
+
+
   }
   changePath(text) {
     console.log(text);
@@ -153,8 +153,8 @@ class Dashboard extends Component {
       return (
         <div>
           <Nav changePath={this.changePath} />
-          <Chart user={this.state.userData} 
-                initialData={data} 
+          <Chart user={this.state.userData}
+                initialData={data}
                 addfriend1={frdData1}
                 addfriend2={frdData2}
                 addfriend3={frdData3}/>
@@ -182,8 +182,25 @@ class Dashboard extends Component {
 	         options={{
              title:{
                display: true,
-               text:'Engergy Consumption',
+               text:'Monthly Engergy Consumption',
                fontSize: 25
+             },
+             legend: {
+               display: false
+             },
+             scales: {
+               yAxes: [{
+                 scaleLabel: {
+                   display: true,
+                   labelString: 'kWh',
+                   fontSize: 15
+                 },
+                 ticks: {
+                   min: 200,
+                   max: 400,
+                   stepSize: 50
+                }
+               }]
              }
            }}
         />
@@ -192,8 +209,25 @@ class Dashboard extends Component {
            options={{
              title:{
                display: true,
-               text:'Cost',
+               text:'Monthly Bill',
                fontSize: 25
+             },
+             legend: {
+               display: false
+             },
+             scales: {
+               yAxes: [{
+                 scaleLabel: {
+                   display: true,
+                   labelString: 'Dollars',
+                   fontSize: 15
+                 },
+                   ticks: {
+                     min: 30,
+                     max: 100,
+                     stepSize: 10
+                  }
+               }]
              }
            }}
         />

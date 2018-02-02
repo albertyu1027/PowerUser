@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+var cors = require("cors");
 const app = express();
 const passport = require("passport");
 const session = require("express-session");
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 // Serve up static assets
 app.use(express.static(`${__dirname}/client/build`));
 

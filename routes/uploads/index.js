@@ -74,7 +74,7 @@ function stripDollarSign(row_cost) {
 
 function getMonthNumber(row_date) {
 	var date = new Date(row_date);
-	return (date.getMonth());
+	return Number(date.getMonth().toString());
 }
 
 module.exports = router;
