@@ -10,3 +10,7 @@ nav .btn {
 	margin-right:16px;
 	margin-bottom:5px;
 }
+
+nav .navbar-brand img {
+	height:60px;
+}
