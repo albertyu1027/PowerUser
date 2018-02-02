@@ -37,18 +37,18 @@ class Dashboard extends Component {
         let bills = [];
         let kwh = [];
         let backgroundColor = [
-          'rgba(255,99,132,0.6)',
-          'rgba(255, 0, 0, 0.3)',
-          'rgba(0, 255, 0, 0.3)',
-          'rgba(0, 0, 255, 0.3)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)',
-          'rgba(255,99,132,0.6)'
+          'rgba(0,0,128,.8)',
+          'rgba(0,0,255,.8)',
+          'rgba(0,128,0,.8)',
+          'rgba(0,255,255,.8)',
+          'rgba(128,0,0,.8)',
+          'rgba(128,0,128,.8)',
+          'rgba(0,0,128,.8)',
+          'rgba(255,0,0,.6)',
+          'rgba(255,0,255,.8)',
+          'rgba(255,255,0,.8)',
+          'rgba(255,99,132,0.8)',
+          'rgba(0,128,128,0.8)'
         ];
 
         console.log(res.data)
@@ -58,7 +58,8 @@ class Dashboard extends Component {
           months.push(res.data[i].date);
         }
         console.log(months)
-          months.sort();
+          months.sort(function(a, b){return a-b});
+          console.log(months)
 
           // loop throuh sorted month data
           for (let i = 0; i < months.length; i++) {
@@ -196,7 +197,7 @@ class Dashboard extends Component {
                  },
                  ticks: {
                    min: 200,
-                   max: 700,
+                   max: 400,
                    stepSize: 50
                 }
                }]
@@ -222,8 +223,8 @@ class Dashboard extends Component {
                    fontSize: 15
                  },
                    ticks: {
-                     min: 50,
-                     max: 150,
+                     min: 30,
+                     max: 100,
                      stepSize: 10
                   }
                }]
