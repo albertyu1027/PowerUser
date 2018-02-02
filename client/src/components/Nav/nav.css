@@ -1,8 +1,16 @@
-nav .navbar-header {
+nav {
+	margin-bottom: 33px;
+}
+
+.navbar-nav {
 	width: 100%;
 }
 
 nav .btn {
 	margin-right:16px;
+	margin-bottom:5px;
 }
 
+nav .navbar-brand img {
+	height:60px;
+}
