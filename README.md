@@ -79,15 +79,18 @@ git push heroku name_of_branch:master
 ## How To Get Started
 
 1. Sign Up For An Account:
+   <br />
    ![sign up screen](https://i.imgur.com/XQtHlb3.png)
 
 2. Log In To Your Account:
+   <br />
    ![login screen](https://i.imgur.com/l5ry3Np.png)
 
 3. Navigate To Your Upload Page And Upload Your CSV Data (click the information button at the bottom for instructions):
-
-![upload screen](https://i.imgur.com/E4vfa0S.png)
+   <br />
+   ![upload screen](https://i.imgur.com/E4vfa0S.png)
 
 4. Compete With Your Friends:
+   <br />
 
 ![compete with friends](https://i.imgur.com/SNUvumZ.png)
