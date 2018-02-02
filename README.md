@@ -3,17 +3,18 @@
 [![dependencies Status](https://david-dm.org/albertyu1027/PowerUser/status.svg)](https://david-dm.org/albertyu1027/PowerUser)
 
 ## Table of Contents
+
 [Purpose and Value](#purpose-and-value)<br />
 [Project Deliverables](#project-deliverables)<br />
 [Starting App Locally](#starting-the-app-locally)<br />
 [Deployment](#deployment)<br />
+[How To Get Started](#how-to-get-started)<br />
 
 ## Purpose and Value
 
-__Purpose__: Reduce energy costs through continuous monitoring and baseline comparisons with friends 
+**Purpose**: Reduce energy costs through continuous monitoring and baseline comparisons with friends
 
-__Value__: Provide environmentally conscious consumers a tool to maintain awareness of power consumption 
-
+**Value**: Provide environmentally conscious consumers a tool to maintain awareness of power consumption
 
 ## Project Mock-Up
 
@@ -24,13 +25,14 @@ __Value__: Provide environmentally conscious consumers a tool to maintain awaren
 ## Project Deliverables
 
 ### UI Mock-up
+
 [Figma](https://www.figma.com/file/G8MpnNnitPiCGptAVdmXiZUz/Power-User)
 
 ### Project Management on AirTable
+
 [Assigned Tasks](https://airtable.com/shrzxX9mCGg3EONkc/tblQ3GATbXly6c342)<br />
 [Due Dates calendar view](https://airtable.com/shrCMTMPGnggWSeEo)<br />
 [Status Kanban](https://airtable.com/shrnQGYnws5jOAAsY)
-
 
 ## Starting the app locally
 
@@ -57,6 +59,7 @@ Create a new build from the root directory of your local environment
 cd client
 yarn build
 ```
+
 After Webpack has completed the build, commit the new build files to the repo and push to Heroku.
 
 ```
@@ -72,3 +75,17 @@ If you want to push a different branch to Heroku, change the last command to the
 ### name_of_branch should be the name of the branch you want to push to Heroku.
 git push heroku name_of_branch:master
 ```
+
+## How To Get Started
+
+1. Sign Up For An Account:
+   ![sign up screen][https://ibb.co/j2awb6]
+
+2. Log In To Your Account:
+   ![login screen][https://ibb.co/jikew6]
+
+3. Navigate To Your Upload Page And Upload Your CSV Data (click the information button at the bottom for instructions):
+
+![upload screen][https://ibb.co/kaacjr]
+
+4. Compete With Your Friends:
