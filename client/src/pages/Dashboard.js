@@ -161,7 +161,7 @@ class Dashboard extends Component {
         </div>
       );
     }
-    if (this.state.pathTo == "/upload") {
+    if (this.state.pathTo === "/upload") {
       return (
         <div>
           <Nav changePath={this.changePath} />
