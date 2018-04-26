@@ -81,17 +81,17 @@ git push heroku name_of_branch:master
 ### Sign Up For An Account:
 
    <br />
-   ![sign up screen](https://i.imgur.com/XQtHlb3.png)
+   ![sign up](https://i.imgur.com/XQtHlb3.png)
 
 ### Log In To Your Account:
 
    <br />
-   ![login screen](https://i.imgur.com/l5ry3Np.png)
+   ![login](https://i.imgur.com/l5ry3Np.png)
 
 ### Navigate To Your Upload Page And Upload Your CSV Data (click the information button at the bottom for instructions):
 
    <br />
-   ![upload screen](https://i.imgur.com/E4vfa0S.png)
+   ![uploads](https://i.imgur.com/E4vfa0S.png)
 
 ### Compete With Your Friends:
 
