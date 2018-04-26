@@ -59,7 +59,7 @@ class LoginForm extends Component {
     console.log("handleSubmit");
     
     API
-      .loginUser({username: 'adhambishr@gmail.com', password: 'adhbi12'})
+      .loginUser({username: 'guest@gmail.com', password: 'guest123'})
       .then(response => {
         // console.log(response);
         if (response.status === 200) {
