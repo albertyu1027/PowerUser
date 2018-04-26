@@ -91,8 +91,8 @@ git push heroku name_of_branch:master
 ### Navigate To Your Upload Page And Upload Your CSV Data (click the information button at the bottom for instructions):
 
    <br />
-   ![uploads](https://i.imgur.com/E4vfa0S.png)
-
+   <!-- ![uploads](https://i.imgur.com/E4vfa0S.png) -->
+    ![uploads](https://i.imgur.com/SNUvumZ.png)
 ### Compete With Your Friends:
 
    <br />
