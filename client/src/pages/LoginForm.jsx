@@ -78,8 +78,8 @@ class LoginForm extends Component {
               <img
                 alt="Power User Img"
                 src="./images/power-user-img.png"
-                height="300px"
-                width="300px"
+                height="100px"
+                width="100px"
               />
 
               <form>
