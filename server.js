@@ -52,5 +52,5 @@ mongoose.connect(MONGODB_URI);
 // Start the API server
 app.listen(app.get("port"), function() {
   console.log(`🌎  ==> API Server now listening on PORT ${app.get("port")}!`);
-  console.log("ENV", process.env.NODE_ENV);
+  // console.log("ENV", process.env.NODE_ENV);
 });

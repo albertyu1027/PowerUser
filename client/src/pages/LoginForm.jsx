@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 // import "./login.css";
-import { Redirect, Link } from "react-router-dom";
-// import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
+import {Redirect, Link} from "react-router-dom";
+// import googleButton from
+// './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import API from "../utils/API";
-import { Container } from "../components/Grid";
+import {Container} from "../components/Grid";
 
 
 class LoginForm extends Component {
@@ -17,8 +18,15 @@ class LoginForm extends Component {
       user: null
     };
     // this.googleSignin = this.googleSignin.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this
+      .handleSubmit
+      .bind(this);
+    this.handleChange = this
+      .handleChange
+      .bind(this);
+    this.guestLogIn = this
+      .guestLogIn
+      .bind(this);
   }
 
   handleChange(event) {
@@ -27,49 +35,48 @@ class LoginForm extends Component {
     });
   }
 
-  // loginUser(username, password) {
-  //   API.loginUser({ username, password }).then(response => {
-  //     console.log(response);
-  //     if (response.status === 200) {
-  //       // update the state
-  //       this.setState({
-  //         loggedIn: true,
-  //         user: response.data.user
-  //       });
-  //     }
-  //   });
-  // }
+  // loginUser(username, password) {   API.loginUser({ username, password
+  // }).then(response => {     console.log(response);     if (response.status ===
+  // 200) {       // update the state       this.setState({         loggedIn:
+  // true,         user: response.data.user       });     }   }); }
 
   handleSubmit(event) {
     event.preventDefault();
     console.log("handleSubmit");
 
-    API.loginUser({
-      username: this.state.username,
-      password: this.state.password
-    }).then(response => {
-      // console.log(response);
-      if (response.status === 200) {
-        // update the state
-        this.setState({
-          loggedIn: true,
-          user: response.data.user,
-          redirectTo: "/dash"
-        });
-      }
-    });
+    API
+      .loginUser({username: this.state.username, password: this.state.password})
+      .then(response => {
+        // console.log(response);
+        if (response.status === 200) {
+          // update the state
+          this.setState({loggedIn: true, user: response.data.user, redirectTo: "/dash"});
+        }
+      });
   }
-
+  guestLogIn(event) {
+    event.preventDefault();
+    console.log("handleSubmit");
+    
+    API
+      .loginUser({username: 'adhambishr@gmail.com', password: 'adhbi12'})
+      .then(response => {
+        // console.log(response);
+        if (response.status === 200) {
+          // update the state
+          this.setState({loggedIn: true, user: response.data.user, redirectTo: "/dash"});
+        }
+      });
+  }
   render() {
     if (this.state.redirectTo) {
-      return (
-        <Redirect
-          to={{
-            pathname: this.state.redirectTo,
-            state: { userData: this.state.user }
-          }}
-        />
-      );
+      return (<Redirect
+        to={{
+        pathname: this.state.redirectTo,
+        state: {
+          userData: this.state.user
+        }
+      }}/>);
     } else {
       return (
         <div>
@@ -85,7 +92,7 @@ class LoginForm extends Component {
               <form>
                 <div className="input-group with-addon-icon-left">
                   <span className="input-group-addon">
-                    <i className="fa fa-user" />
+                    <i className="fa fa-user"/>
                   </span>
                   <input
                     type="email"
@@ -93,13 +100,12 @@ class LoginForm extends Component {
                     className="form-control"
                     placeholder="Username"
                     value={this.state.username}
-                    onChange={this.handleChange}
-                  />
+                    onChange={this.handleChange}/>
                 </div>
 
                 <div className="input-group with-addon-icon-left">
                   <span className="input-group-addon">
-                    <i className="fa fa-unlock-alt" />
+                    <i className="fa fa-unlock-alt"/>
                   </span>
                   <input
                     type="password"
@@ -107,28 +113,36 @@ class LoginForm extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                     className="form-control"
-                    placeholder="Password"
-                  />
+                    placeholder="Password"/>
                 </div>
                 <button
                   id="submit-userauth"
                   type="button"
                   className="btn btn-outline-success"
                   onClick={this.handleSubmit}
-                  disabled={!(this.state.username && this.state.password)}
-                >
+                  disabled={!(this.state.username && this.state.password)}>
                   Login
+                </button>
+                <button
+                  id="submit-dummyauth"
+                  type="button"
+                  className="btn btn-outline-warning"
+                  style={{
+                  marginTop: "10px",
+                  
+                }}
+                  onClick={this.guestLogIn}>
+                  Preview The App!
                 </button>
               </form>
               <Link to="/signup">
                 {" "}
                 <p
                   style={{
-                    color: "blue",
-                    textAlign: "center",
-                    marginTop: "10px"
-                  }}
-                >
+                  color: "blue",
+                  textAlign: "center",
+                  marginTop: "10px"
+                }}>
                   Not A User? Sign Up Today
                 </p>
               </Link>
