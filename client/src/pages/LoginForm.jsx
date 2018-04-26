@@ -75,12 +75,12 @@ class LoginForm extends Component {
         <div>
           <Container>
             <div className="LoginForm">
-              <img
+              {/* <img
                 alt="Power User Img"
                 src="./images/power-user-img.png"
-                height="100px"
-                width="100px"
-              />
+                height="300px"
+                width="300px"
+              /> */}
 
               <form>
                 <div className="input-group with-addon-icon-left">
