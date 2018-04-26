@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.17.1",
+    "dotenv": "^5.0.1",
     "mongoose": "^5.0.0",
     "react": "^16.0.0",
     "react-addons-update": "^15.6.2",
