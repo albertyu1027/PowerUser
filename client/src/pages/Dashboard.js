@@ -182,7 +182,7 @@ class Dashboard extends Component {
 	         options={{
              title:{
                display: true,
-               text:'Monthly Engergy Consumption',
+               text:'Monthly Energy Consumption',
                fontSize: 25
              },
              legend: {
