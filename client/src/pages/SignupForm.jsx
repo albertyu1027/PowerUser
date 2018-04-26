@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Container } from "../components/Grid";
 import API from "../utils/API";
 import {
-  Grid,
-  Row,
-  Col,
   Form,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock
 } from "react-bootstrap";
 
 class SignupForm extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Bar} from "react-chartjs-2";
 import { Container } from "../components/Grid";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import Nav from "../components/Nav";
 import Upload from "./Upload";
 import Chart from "./FrdChart";
@@ -149,7 +149,7 @@ class Dashboard extends Component {
     if (!this.props.location.state) {
     return <Redirect to="/login" />;
     }
-    if (this.state.pathTo == "/frd") {
+    if (this.state.pathTo === "/frd") {
       return (
         <div>
           <Nav changePath={this.changePath} />
@@ -161,7 +161,7 @@ class Dashboard extends Component {
         </div>
       );
     }
-    if (this.state.pathTo == "/upload") {
+    if (this.state.pathTo === "/upload") {
       return (
         <div>
           <Nav changePath={this.changePath} />

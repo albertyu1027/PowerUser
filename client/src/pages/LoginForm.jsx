@@ -3,9 +3,8 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 // import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
 import API from "../utils/API";
-import googleButton from "../components/google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png";
 import { Container } from "../components/Grid";
-import Nav from "../components/Nav";
+
 
 class LoginForm extends Component {
   constructor() {
