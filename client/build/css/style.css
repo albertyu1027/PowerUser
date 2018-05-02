@@ -16,7 +16,7 @@ body {
   padding-bottom: 20px;
   text-align: center;
 }
-#submit-userauth {
+#submit-userauth, #submit-dummyauth {
   min-width: 300px;
 }
 .container {
